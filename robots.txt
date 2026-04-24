@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://cleo-ai-ops.github.io/client-intake-autopilot-pack/sitemap.xml
