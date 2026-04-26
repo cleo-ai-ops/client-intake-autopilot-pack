@@ -1,0 +1,4 @@
+Lead Name,Service Fit (0-2),Budget Fit (0-2),Timeline Fit (0-2),Decision Maker (0-2),Scope Clarity (0-2),Readiness (0-2),Scope Risk Flag,Total Score,Tier,Next Action
+Example Hot Lead,2,2,2,2,2,2,No,12,Hot,Send booking link + tailored reply
+Example Warm Lead,2,1,1,1,1,1,No,7,Warm,Ask one clarifying question
+Example Risk Lead,2,2,0,1,0,1,Yes,6,Risk,Set boundaries before call
