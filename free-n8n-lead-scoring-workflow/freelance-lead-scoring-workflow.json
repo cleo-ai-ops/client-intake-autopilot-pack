@@ -1,0 +1,88 @@
+{
+  "name": "Freelance Lead Scoring - Form to Tiered Reply",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "freelance-lead-score",
+        "formTitle": "Freelance Lead Qualification",
+        "formDescription": "Score a client inquiry before booking a discovery call.",
+        "formFields": {
+          "values": [
+            {"fieldLabel": "Name", "fieldType": "text", "requiredField": true},
+            {"fieldLabel": "Email", "fieldType": "email", "requiredField": true},
+            {"fieldLabel": "Project goal", "fieldType": "textarea", "requiredField": true},
+            {"fieldLabel": "Budget range", "fieldType": "dropdown", "fieldOptions": {"values": [{"option": "Under $1k"}, {"option": "$1k-$3k"}, {"option": "$3k-$7k"}, {"option": "$7k+"}, {"option": "Not sure"}]}, "requiredField": true},
+            {"fieldLabel": "Timeline", "fieldType": "dropdown", "fieldOptions": {"values": [{"option": "This week"}, {"option": "2-4 weeks"}, {"option": "1-3 months"}, {"option": "Flexible"}]}, "requiredField": true},
+            {"fieldLabel": "Who approves the project?", "fieldType": "dropdown", "fieldOptions": {"values": [{"option": "I do"}, {"option": "My team"}, {"option": "Someone else"}, {"option": "Not sure"}]}, "requiredField": true},
+            {"fieldLabel": "How clear is the scope?", "fieldType": "dropdown", "fieldOptions": {"values": [{"option": "Very clear"}, {"option": "Somewhat clear"}, {"option": "Still vague"}]}, "requiredField": true}
+          ]
+        }
+      },
+      "id": "lead_form",
+      "name": "Lead Intake Form",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "freelance-lead-score"
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $json;\nconst budget = item['Budget range'];\nconst timeline = item['Timeline'];\nconst approver = item['Who approves the project?'];\nconst scope = item['How clear is the scope?'];\nlet score = 0;\nscore += budget === '$7k+' ? 25 : budget === '$3k-$7k' ? 22 : budget === '$1k-$3k' ? 14 : budget === 'Not sure' ? 6 : 2;\nscore += timeline === '1-3 months' ? 20 : timeline === '2-4 weeks' ? 15 : timeline === 'Flexible' ? 12 : 6;\nscore += approver === 'I do' ? 20 : approver === 'My team' ? 12 : approver === 'Someone else' ? 6 : 0;\nscore += scope === 'Very clear' ? 20 : scope === 'Somewhat clear' ? 12 : 3;\nscore += (item['Project goal'] || '').length > 120 ? 15 : 8;\nconst tier = score >= 80 ? 'HOT' : score >= 55 ? 'WARM' : 'COLD';\nconst nextAction = tier === 'HOT' ? 'Send booking link' : tier === 'WARM' ? 'Ask clarification questions' : 'Decline or offer paid diagnostic';\nreturn [{ json: { ...item, score, tier, nextAction } }];"
+      },
+      "id": "score_lead",
+      "name": "Score Lead",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [260, 0]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {"conditions": {"options": {"caseSensitive": true, "leftValue": "", "typeValidation": "strict"}, "conditions": [{"leftValue": "={{ $json.tier }}", "rightValue": "HOT", "operator": {"type": "string", "operation": "equals"}}], "combinator": "and"}},
+            {"conditions": {"options": {"caseSensitive": true, "leftValue": "", "typeValidation": "strict"}, "conditions": [{"leftValue": "={{ $json.tier }}", "rightValue": "WARM", "operator": {"type": "string", "operation": "equals"}}], "combinator": "and"}}
+          ]
+        },
+        "fallbackOutput": 2
+      },
+      "id": "route_by_tier",
+      "name": "Route by Tier",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [520, 0]
+    },
+    {
+      "parameters": {"respondWith": "text", "responseBody": "=HOT lead (score {{ $json.score }}). Next action: send booking link."},
+      "id": "hot_response",
+      "name": "HOT Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [800, -180]
+    },
+    {
+      "parameters": {"respondWith": "text", "responseBody": "=WARM lead (score {{ $json.score }}). Next action: ask clarification questions before booking."},
+      "id": "warm_response",
+      "name": "WARM Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [800, 0]
+    },
+    {
+      "parameters": {"respondWith": "text", "responseBody": "=COLD lead (score {{ $json.score }}). Next action: decline politely or offer paid diagnostic."},
+      "id": "cold_response",
+      "name": "COLD Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [800, 180]
+    }
+  ],
+  "connections": {
+    "Lead Intake Form": {"main": [[{"node": "Score Lead", "type": "main", "index": 0}]]},
+    "Score Lead": {"main": [[{"node": "Route by Tier", "type": "main", "index": 0}]]},
+    "Route by Tier": {"main": [[{"node": "HOT Response", "type": "main", "index": 0}], [{"node": "WARM Response", "type": "main", "index": 0}], [{"node": "COLD Response", "type": "main", "index": 0}]]}
+  },
+  "pinData": {},
+  "settings": {"executionOrder": "v1"},
+  "staticData": null,
+  "tags": []
+}
