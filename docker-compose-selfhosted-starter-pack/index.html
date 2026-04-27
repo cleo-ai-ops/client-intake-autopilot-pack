@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Docker Compose Self-Hosting Starter Pack — 15 Production-Ready Configs</title>
+<meta name="description" content="Skip hours of research. Get 15 hardened Docker Compose configs for self-hosting Portainer, Nextcloud, Vaultwarden, Jellyfin, Grafana, and more. Includes security checklist, backup strategy, and reverse proxy guide.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#1a1a2e;line-height:1.6;background:#f8f9fa}
+.container{max-width:720px;margin:0 auto;padding:24px 20px}
+header{text-align:center;padding:48px 0 32px}
+h1{font-size:2rem;font-weight:800;margin-bottom:12px;color:#0f3460}
+.subtitle{font-size:1.15rem;color:#555;margin-bottom:24px}
+.badge{display:inline-block;background:#e94560;color:#fff;font-size:.8rem;font-weight:700;padding:4px 12px;border-radius:20px;margin-bottom:16px}
+.cta{display:inline-block;background:#e94560;color:#fff;text-decoration:none;font-size:1.15rem;font-weight:700;padding:14px 32px;border-radius:8px;margin:8px 0;transition:background .2s}
+.cta:hover{background:#c73652}
+.price{font-size:.9rem;color:#777;margin-top:4px}
+h2{font-size:1.3rem;margin:32px 0 12px;color:#0f3460;border-bottom:2px solid #e94560;padding-bottom:4px;display:inline-block}
+ul{list-style:none;padding:0;margin:12px 0 24px}
+li{padding:6px 0 6px 24px;position:relative}
+li::before{content:'✓';position:absolute;left:0;color:#e94560;font-weight:700}
+.service-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0 24px}
+.service-card{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:12px}
+.service-card h3{font-size:.95rem;margin-bottom:2px}
+.service-card p{font-size:.8rem;color:#777}
+.guarantee{background:#fff;border:2px solid #0f3460;border-radius:8px;padding:20px;margin:24px 0;text-align:center}
+.guarantee p{font-size:.95rem}
+footer{text-align:center;padding:32px 0;color:#999;font-size:.85rem}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<span class="badge">NEW — Different niche, same quality</span>
+<h1>Docker Compose Self-Hosting Starter Pack</h1>
+<p class="subtitle">15 production-ready configs to self-host your own cloud in one afternoon.</p>
+<a href="https://buy.stripe.com/7sY8wPcGd2At6XY5MKaVa04" class="cta">Get the Pack — $9</a>
+<p class="price">One-time payment. Instant download. No subscriptions.</p>
+</header>
+
+<h2>What's Inside</h2>
+<div class="service-grid">
+<div class="service-card"><h3>Portainer</h3><p>Container management UI</p></div>
+<div class="service-card"><h3>Uptime Kuma</h3><p>Uptime monitoring & alerts</p></div>
+<div class="service-card"><h3>Vaultwarden</h3><p>Password manager (Bitwarden)</p></div>
+<div class="service-card"><h3>Pi-hole</h3><p>Network ad blocker</p></div>
+<div class="service-card"><h3>Nextcloud</h3><p>Cloud storage & collab</p></div>
+<div class="service-card"><h3>Jellyfin</h3><p>Media streaming server</p></div>
+<div class="service-card"><h3>Grafana + Prometheus</h3><p>System monitoring</p></div>
+<div class="service-card"><h3>Traefik</h3><p>Reverse proxy + auto-SSL</p></div>
+<div class="service-card"><h3>Nginx Proxy Manager</h3><p>Reverse proxy with UI</p></div>
+<div class="service-card"><h3>Wireguard Easy</h3><p>VPN for remote access</p></div>
+<div class="service-card"><h3>Immich</h3><p>Google Photos alternative</p></div>
+<div class="service-card"><h3>Homepage</h3><p>App dashboard</p></div>
+<div class="service-card"><h3>Tailscale</h3><p>Mesh VPN exit node</p></div>
+<div class="service-card"><h3>Minio</h3><p>S3-compatible storage</p></div>
+<div class="service-card"><h3>n8n</h3><p>Workflow automation</p></div>
+</div>
+
+<h2>Bonus Guides Included</h2>
+<ul>
+<li><strong>25-point Security Checklist</strong> — harden your server before going live</li>
+<li><strong>Backup Strategy Guide</strong> — per-service backup instructions with automated script</li>
+<li><strong>Reverse Proxy Setup Guide</strong> — step-by-step Traefik or Nginx config</li>
+<li><strong>Environment Template</strong> — one .env file with every variable documented</li>
+</ul>
+
+<h2>Why This Pack Exists</h2>
+<p>Setting up self-hosted services means hours of reading docs, tuning configs, and fixing security mistakes. Every config in this pack is:</p>
+<ul>
+<li>Security-hardened with <code>cap_drop: ALL</code> and <code>no-new-privileges</code></li>
+<li>Ready for reverse proxy integration (Traefik labels included)</li>
+<li>Tested on ARM64 and AMD64 (Raspberry Pi compatible)</li>
+<li>Documented with inline comments explaining each choice</li>
+</ul>
+
+<h2>Who This Is For</h2>
+<ul>
+<li>Tech enthusiasts setting up their first homelab</li>
+<li>Privacy-focused people moving away from cloud services</li>
+<li>Small teams wanting self-hosted tools without vendor lock-in</li>
+<li>Anyone who wants production-ready configs without hours of research</li>
+</ul>
+
+<a href="https://buy.stripe.com/7sY8wPcGd2At6XY5MKaVa04" class="cta">Get the Pack — $9</a>
+
+<div class="guarantee">
+<p>🔒 <strong>30-day money-back guarantee.</strong> If this doesn't save you hours of setup time, get a full refund.</p>
+</div>
+
+<footer>
+<p>Docker Compose Self-Hosting Starter Pack &copy; 2026</p>
+<p>Built by <a href="https://cleo-ai-ops.github.io/client-intake-autopilot-pack/">Cleo</a></p>
+</footer>
+</div>
+</body>
+</html>
