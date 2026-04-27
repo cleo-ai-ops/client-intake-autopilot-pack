@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Docker Compose Generator — Pick Your Self-Hosted Stack</title>
+    <meta name="description" content="Generate production-ready Docker Compose configs instantly. Pick from 15 popular self-hosted services: Nextcloud, Pi-hole, Vaultwarden, Portainer, and more.">
+    <meta name="keywords" content="docker compose generator, docker compose template, self hosting docker, homelab docker compose, docker compose file generator">
+    <link rel="canonical" href="https://cleo-ai-ops.github.io/client-intake-autopilot-pack/docker-compose-generator/">
+    <meta property="og:title" content="Free Docker Compose Generator">
+    <meta property="og:description" content="Pick your self-hosted services and get a production-ready docker-compose.yml instantly.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0d1117; color: #c9d1d9; line-height: 1.6; }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        header { text-align: center; padding: 40px 0 20px; }
+        header h1 { font-size: 1.8rem; color: #58a6ff; margin-bottom: 8px; }
+        header p { color: #8b949e; font-size: 1rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin: 24px 0; }
+        .service-card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 16px; cursor: pointer; transition: all 0.2s; user-select: none; }
+        .service-card:hover { border-color: #58a6ff; }
+        .service-card.selected { border-color: #3fb950; background: #0d2818; }
+        .service-card .name { font-weight: 700; font-size: 0.95rem; color: #c9d1d9; margin-bottom: 4px; }
+        .service-card .desc { font-size: 0.8rem; color: #8b949e; }
+        .service-card .check { float: right; color: #3fb950; font-size: 1.2rem; display: none; }
+        .service-card.selected .check { display: inline; }
+        .output-box { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px; margin: 24px 0; position: relative; }
+        .output-box h3 { color: #58a6ff; margin-bottom: 12px; font-size: 1rem; }
+        .output-box pre { background: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 16px; overflow-x: auto; font-size: 0.85rem; line-height: 1.5; color: #c9d1d9; white-space: pre; max-height: 500px; overflow-y: auto; }
+        .copy-btn { position: absolute; top: 12px; right: 12px; padding: 6px 14px; background: #238636; color: #fff; border: none; border-radius: 6px; font-size: 0.82rem; cursor: pointer; font-weight: 600; }
+        .copy-btn:hover { background: #2ea043; }
+        .copy-btn.copied { background: #1f6feb; }
+        .cta-box { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 24px; margin: 24px 0; text-align: center; }
+        .cta-box h3 { color: #58a6ff; margin-bottom: 8px; }
+        .cta-box p { color: #8b949e; font-size: 0.92rem; margin-bottom: 16px; }
+        .cta-btn { display: inline-block; padding: 12px 28px; background: #238636; color: #fff; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 1rem; transition: background 0.2s; }
+        .cta-btn:hover { background: #2ea043; }
+        footer { text-align: center; padding: 24px 0; color: #484f58; font-size: 0.82rem; }
+        footer a { color: #58a6ff; }
+        .count { text-align: center; color: #8b949e; font-size: 0.9rem; margin: 8px 0; }
+        .empty-msg { text-align: center; color: #484f58; padding: 40px 0; font-style: italic; }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Docker Compose Generator",
+      "description": "Generate production-ready Docker Compose configs by picking from 15 popular self-hosted services.",
+      "url": "https://cleo-ai-ops.github.io/client-intake-autopilot-pack/docker-compose-generator/",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Docker Compose Generator</h1>
+        <p>Pick your self-hosted services. Get a production-ready docker-compose.yml.</p>
+    </header>
+
+    <div class="grid" id="services"></div>
+    <div class="count" id="count">Select services to generate your config</div>
+
+    <div class="output-box" id="output-section" style="display:none;">
+        <h3>Your docker-compose.yml</h3>
+        <button class="copy-btn" onclick="copyYml()">Copy</button>
+        <pre id="output"></pre>
+    </div>
+
+    <div class="cta-box">
+        <h3>Want 15 Pre-Configured Services + Setup Guides?</h3>
+        <p>This generator gives you the basics. Our Docker Compose Self-Hosting Starter Pack includes full configs with environment variables, volume mounts, network setup, and step-by-step deployment guides for 15 services.</p>
+        <a href="https://cleomanagement.gumroad.com/l/ehtlqu" class="cta-btn" target="_blank">Get the Full Pack — $9</a>
+    </div>
+
+    <div class="cta-box">
+        <h3>Running a Homelab? Self-Host Everything.</h3>
+        <p>Replace expensive SaaS subscriptions with self-hosted alternatives. Our pack covers Nextcloud, Pi-hole, Vaultwarden, Uptime Kuma, n8n, and 10 more.</p>
+        <a href="https://cleo-ai-ops.github.io/client-intake-autopilot-pack/docker-compose-selfhosted-starter-pack/" class="cta-btn" target="_blank" style="background:#1f6feb;">See What's Included</a>
+    </div>
+
+    <footer>
+        Built by <a href="https://cleo-ai-ops.github.io/client-intake-autopilot-pack/">Cleo</a> · Free developer &amp; freelance tools
+    </footer>
+</div>
+
+<script>
+const services = [
+  { id: 'nginx', name: 'Nginx Proxy Manager', desc: 'Reverse proxy with SSL', port: '81', image: 'jc21/nginx-proxy-manager:latest', volumes: ['data','letsencrypt'] },
+  { id: 'portainer', name: 'Portainer', desc: 'Docker management UI', port: '9443', image: 'portainer/portainer-ce:latest', volumes: ['data','/var/run/docker.sock'] },
+  { id: 'pihole', name: 'Pi-hole', desc: 'Network ad blocker', port: '80', image: 'pihole/pihole:latest', volumes: ['etc-pihole','etc-dnsmasq.d'], env: {WEBPASSWORD: 'change-this-password'} },
+  { id: 'nextcloud', name: 'Nextcloud', desc: 'Cloud storage & collaboration', port: '8080', image: 'nextcloud:latest', volumes: ['html','data'] },
+  { id: 'vaultwarden', name: 'Vaultwarden', desc: 'Bitwarden-compatible password manager', port: '80', image: 'vaultwarden/server:latest', volumes: ['data'], env: {ADMIN_TOKEN: 'change-this-token'} },
+  { id: 'uptime', name: 'Uptime Kuma', desc: 'Uptime monitoring', port: '3001', image: 'louislam/uptime-kuma:latest', volumes: ['data'] },
+  { id: 'n8n', name: 'n8n', desc: 'Workflow automation', port: '5678', image: 'n8nio/n8n:latest', volumes: ['data'] },
+  { id: 'grafana', name: 'Grafana', desc: 'Dashboards & visualization', port: '3000', image: 'grafana/grafana:latest', volumes: ['data'] },
+  { id: 'prometheus', name: 'Prometheus', desc: 'Metrics collection', port: '9090', image: 'prom/prometheus:latest', volumes: ['data'] },
+  { id: 'traefik', name: 'Traefik', desc: 'Modern reverse proxy', port: '8080', image: 'traefik:v3.0', volumes: ['/var/run/docker.sock','data'], cmd: '--api.insecure=true --providers.docker=true --providers.docker.exposedbydefault=false --entrypoints.web.address=:80 --entrypoints.websecure.address=:443' },
+  { id: 'authelia', name: 'Authelia', desc: 'SSO & 2FA auth portal', port: '9091', image: 'authelia/authelia:latest', volumes: ['config'], env: {AUTHELIA_JWT_SECRET: 'change-this-secret'} },
+  { id: 'heimdall', name: 'Heimdall', desc: 'Application dashboard', port: '80', image: 'linuxserver/heimdall:latest', volumes: ['config'], env: {PUID: '1000', PGID: '1000', TZ: 'Europe/London'} },
+  { id: 'wg', name: 'WireGuard', desc: 'VPN server', port: '51820', image: 'linuxserver/wireguard:latest', volumes: ['config'], env: {PUID: '1000', PGID: '1000', TZ: 'Europe/London', SERVERURL: 'your-domain.com', PEERS: '1'} },
+  { id: 'gitea', name: 'Gitea', desc: 'Self-hosted Git', port: '3000', image: 'gitea/gitea:latest', volumes: ['data','/etc/timezone:/etc/timezone:ro'] },
+  { id: 'mailu', name: 'Mailu', desc: 'Self-hosted email', port: '80', image: 'mailu/admin:latest', volumes: ['data','dkim','mail','overrides'], env: {DOMAIN: 'example.com', HOSTNAMES: 'mail.example.com', POSTMASTER: 'admin', TLS_FLAVOR: 'letsencrypt', AUTHRATELIMIT: '10/minute'} }
+];
+
+const selected = new Set();
+
+function render() {
+  const grid = document.getElementById('services');
+  grid.innerHTML = services.map(s => `
+    <div class="service-card ${selected.has(s.id)?'selected':''}" onclick="toggle('${s.id}')">
+      <span class="check">✓</span>
+      <div class="name">${s.name}</div>
+      <div class="desc">${s.desc}</div>
+    </div>
+  `).join('');
+  document.getElementById('count').textContent = selected.size ? `${selected.size} service${selected.size>1?'s':''} selected` : 'Select services to generate your config';
+  generateYml();
+}
+
+function toggle(id) {
+  if (selected.has(id)) selected.delete(id); else selected.add(id);
+  render();
+}
+
+function generateYml() {
+  if (selected.size === 0) {
+    document.getElementById('output-section').style.display = 'none';
+    return;
+  }
+  document.getElementById('output-section').style.display = 'block';
+  let yml = '# Generated by Cleo Docker Compose Generator\n# https://cleo-ai-ops.github.io/client-intake-autopilot-pack/docker-compose-generator/\n\nversion: "3.8"\n\nservices:\n';
+
+  for (const s of services.filter(s => selected.has(s.id))) {
+    yml += `  ${s.id}:\n    image: ${s.image}\n    container_name: ${s.id}\n    restart: unless-stopped\n`;
+    if (s.port) yml += `    ports:\n      - "${s.port}:${s.port}"\n`;
+    if (s.volumes && s.volumes.length) {
+      yml += `    volumes:\n`;
+      for (const v of s.volumes) {
+        if (v.startsWith('/')) yml += `      - ${v}:${v}\n`;
+        else yml += `      - ${s.id}-${v}:/${v === 'data' ? 'data' : v}\n`;
+      }
+    }
+    if (s.env && Object.keys(s.env).length) {
+      yml += `    environment:\n`;
+      for (const [k,v] of Object.entries(s.env)) yml += `      - ${k}=${v}\n`;
+    }
+    if (s.cmd) yml += `    command: ${s.cmd}\n`;
+    yml += '\n';
+  }
+
+  // Collect all named volumes
+  const allVolumes = new Set();
+  for (const s of services.filter(s => selected.has(s.id))) {
+    if (s.volumes) for (const v of s.volumes) { if (!v.startsWith('/')) allVolumes.add(`${s.id}-${v}`); }
+  }
+  if (allVolumes.size) {
+    yml += 'volumes:\n';
+    for (const v of allVolumes) yml += `  ${v}:\n`;
+  }
+
+  document.getElementById('output').textContent = yml;
+}
+
+function copyYml() {
+  const text = document.getElementById('output').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+render();
+</script>
+</body>
+</html>
