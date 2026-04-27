@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelance Rate Increase Generator | Free Tool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .gradient-bg { background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans">
+    <div class="max-w-3xl mx-auto px-4 py-12">
+        <div class="text-center mb-10">
+            <h1 class="text-4xl font-bold mb-4">Rate Increase Email Generator</h1>
+            <p class="text-lg text-slate-600">Stop stressing over the "price hike" email. Get a professional draft in seconds.</p>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-xl p-8 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Client Name</label>
+                    <input type="text" id="clientName" placeholder="e.g. Sarah" class="w-full p-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Current Rate</label>
+                    <input type="text" id="currentRate" placeholder="e.g. $50/hr" class="w-full p-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">New Rate</label>
+                    <input type="text" id="newRate" placeholder="e.g. $75/hr" class="w-full p-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Effective Date</label>
+                    <input type="date" id="effectiveDate" class="w-full p-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none">
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-slate-700 mb-2">Reason for increase (optional)</label>
+                <select id="reason" class="w-full p-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none">
+                    <option value="market adjustment">Market Rate Adjustment</option>
+                    <option value="increased expertise">Increased Expertise & Value</option>
+                    <option value="cost of living">Cost of Living / Overhead</option>
+                    <option value="scope evolution">Evolution of Service Scope</option>
+                </select>
+            </div>
+
+            <button onclick="generateEmail()" class="w-full gradient-bg text-white font-bold py-4 rounded-lg hover:opacity-90 transition-all shadow-lg">
+                Generate Email Draft
+            </button>
+        </div>
+
+        <div id="resultContainer" class="hidden bg-white rounded-2xl shadow-xl p-8 border-2 border-indigo-100">
+            <h2 class="text-xl font-bold mb-4 flex items-center">
+                <span class="mr-2">✉️</span> Your Customized Draft
+            </h2>
+            <div id="emailOutput" class="bg-slate-50 p-6 rounded-lg border border-slate-200 whitespace-pre-wrap text-slate-800 mb-6 font-mono text-sm"></div>
+            <button onclick="copyEmail()" class="bg-slate-800 text-white px-6 py-2 rounded-lg hover:bg-slate-700 transition-all text-sm font-medium">
+                Copy to Clipboard
+            </button>
+        </div>
+
+        <div class="mt-12 text-center p-8 bg-indigo-50 rounded-2xl border border-indigo-100">
+            <h3 class="text-xl font-bold mb-2">Need a complete system for raising rates?</h3>
+            <p class="text-slate-600 mb-6">Get the full kit with decision maps, pushback scripts, and a rate tracker.</p>
+            <a href="https://cleomanagement.gumroad.com/l/freelance-rate-raise-email-kit" class="inline-block gradient-bg text-white font-bold px-8 py-3 rounded-lg hover:opacity-90 transition-all shadow-md">
+                Get the Rate Raise Email Kit →
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function generateEmail() {
+            const name = document.getElementById('clientName').value || '[Client Name]';
+            const current = document.getElementById('currentRate').value || '[Current Rate]';
+            const newRate = document.getElementById('newRate').value || '[New Rate]';
+            const date = document.getElementById('effectiveDate').value || '[Date]';
+            const reason = document.getElementById('reason').value;
+
+            let reasonText = '';
+            if(reason === 'market adjustment') reasonText = 'to align my pricing with current market standards for the value provided';
+            if(reason === 'increased expertise') reasonText = 'reflecting the increased expertise and specialized results I am now delivering';
+            if(reason === 'cost of living') reasonText = 'to account for increased operational costs';
+            if(reason === 'scope evolution') reasonText = 'reflecting the expanded scope and depth of our current collaboration';
+
+            const draft = `Subject: Update regarding my freelance rates
+
+Hi ${name},
+
+I've truly enjoyed our collaboration and am proud of the work we've achieved together so far.
+
+I'm writing to let you know that I will be adjusting my rates starting ${date}. My rate will increase from ${current} to ${newRate}.
+
+This change is ${reasonText}, ensuring I can continue to provide the high level of quality and attention your projects deserve.
+
+All work booked or invoiced before ${date} will be honored at my current rate.
+
+I value our partnership and want to make this transition as smooth as possible. If you have any questions or want to discuss how this fits into your upcoming budget, let me know.
+
+Best,
+
+[Your Name]`;
+
+            document.getElementById('emailOutput').innerText = draft;
+            document.getElementById('resultContainer').classList.remove('hidden');
+            document.getElementById('resultContainer').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function copyEmail() {
+            const text = document.getElementById('emailOutput').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Email copied to clipboard!');
+            });
+        }
+    </script>
+</body>
+</html>
