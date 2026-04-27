@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Scope Creep Cost Calculator for Freelancers — How Much Is Scope Creep Costing You?</title>
+    <meta name="description" content="Calculate exactly how much scope creep costs you per year as a freelancer. Free interactive calculator with personalized results and action steps.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6C5CE7;
+            --primary-dark: #5A4BD1;
+            --accent: #00B894;
+            --danger: #E17055;
+            --bg: #F8F9FD;
+            --card: #FFFFFF;
+            --text: #2D3436;
+            --text-light: #636E72;
+            --border: #DFE6E9;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        .container { max-width: 720px; margin: 0 auto; padding: 20px; }
+        header { text-align: center; padding: 40px 0 30px; }
+        header h1 { font-size: 1.8rem; font-weight: 800; margin-bottom: 12px; color: var(--text); }
+        header p { color: var(--text-light); font-size: 1.05rem; max-width: 520px; margin: 0 auto; }
+
+        .card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: var(--shadow);
+            margin-bottom: 24px;
+        }
+        .form-group { margin-bottom: 20px; }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+        }
+        .form-group .hint {
+            font-size: 0.82rem;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+            background: var(--bg);
+        }
+        input[type="number"]:focus { border-color: var(--primary); outline: none; }
+
+        .btn-calculate {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+        }
+        .btn-calculate:hover { background: var(--primary-dark); transform: translateY(-1px); }
+        .btn-calculate:active { transform: translateY(0); }
+
+        .results { display: none; }
+        .results.visible { display: block; }
+
+        .result-hero {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #6C5CE7 0%, #a29bfe 100%);
+            border-radius: 16px;
+            color: white;
+            margin-bottom: 24px;
+        }
+        .result-hero .label { font-size: 0.9rem; opacity: 0.9; margin-bottom: 8px; }
+        .result-hero .amount {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        .result-hero .sublabel { font-size: 0.95rem; opacity: 0.85; }
+
+        .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+        .result-box {
+            background: var(--bg);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+        .result-box .value { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+        .result-box .label { font-size: 0.82rem; color: var(--text-light); margin-top: 4px; }
+
+        .insight-list { list-style: none; padding: 0; }
+        .insight-list li {
+            padding: 12px 16px;
+            border-left: 4px solid var(--accent);
+            background: var(--bg);
+            border-radius: 0 10px 10px 0;
+            margin-bottom: 10px;
+            font-size: 0.92rem;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #00B894 0%, #00CEC9 100%);
+            border-radius: 16px;
+            padding: 28px 24px;
+            text-align: center;
+            color: white;
+            margin-top: 24px;
+        }
+        .cta-box h3 { font-size: 1.2rem; margin-bottom: 8px; }
+        .cta-box p { font-size: 0.92rem; opacity: 0.9; margin-bottom: 16px; }
+        .cta-btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: white;
+            color: #00B894;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+
+        .share-section { text-align: center; padding: 20px 0; }
+        .share-section p { color: var(--text-light); font-size: 0.9rem; margin-bottom: 12px; }
+        .share-links a {
+            display: inline-block;
+            margin: 0 6px;
+            padding: 8px 16px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.85rem;
+            transition: border-color 0.2s;
+        }
+        .share-links a:hover { border-color: var(--primary); }
+
+        footer { text-align: center; padding: 30px 0; font-size: 0.82rem; color: var(--text-light); }
+        footer a { color: var(--primary); text-decoration: none; }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.4rem; }
+            .card { padding: 24px 18px; }
+            .result-hero .amount { font-size: 2.2rem; }
+            .result-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1><i class="fas fa-chart-line" style="color:var(--danger)"></i> Scope Creep Cost Calculator</h1>
+        <p>Find out exactly how much unpaid scope creep is costing you every year — and what to do about it.</p>
+    </header>
+
+    <div class="card">
+        <div class="form-group">
+            <label for="hourlyRate">Your hourly rate ($)</label>
+            <input type="number" id="hourlyRate" placeholder="e.g. 75" min="1" step="1">
+        </div>
+        <div class="form-group">
+            <label for="projectsPerMonth">Projects per month</label>
+            <input type="number" id="projectsPerMonth" placeholder="e.g. 4" min="1" step="1">
+            <div class="hint">Average number of active client projects per month</div>
+        </div>
+        <div class="form-group">
+            <label for="creepHours">Extra unpaid hours per project</label>
+            <input type="number" id="creepHours" placeholder="e.g. 3" min="0" step="0.5">
+            <div class="hint">Hours you work beyond scope without charging</div>
+        </div>
+        <div class="form-group">
+            <label for="creepPercentage">% of projects affected by scope creep</label>
+            <input type="number" id="creepPercentage" placeholder="e.g. 60" min="0" max="100" step="5">
+            <div class="hint">What percentage of your projects have scope creep?</div>
+        </div>
+        <button class="btn-calculate" onclick="calculate()">Calculate My Scope Creep Cost</button>
+    </div>
+
+    <div id="results" class="results">
+        <div class="result-hero">
+            <div class="label">Scope creep is costing you</div>
+            <div class="amount" id="totalCost">$0</div>
+            <div class="sublabel">per year in unpaid work</div>
+        </div>
+
+        <div class="card">
+            <div class="result-grid">
+                <div class="result-box">
+                    <div class="value" id="monthlyCost">$0</div>
+                    <div class="label">Lost per month</div>
+                </div>
+                <div class="result-box">
+                    <div class="value" id="lostDays">0</div>
+                    <div class="label">Unpaid work days/year</div>
+                </div>
+                <div class="result-box">
+                    <div class="value" id="pctRevenue">0%</div>
+                    <div class="label">Of your gross revenue</div>
+                </div>
+                <div class="result-box">
+                    <div class="value" id="creepProjects">0</div>
+                    <div class="label">Creep-affected projects/year</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 style="margin-bottom:14px"><i class="fas fa-lightbulb" style="color:#FDCB6E"></i> What This Means For You</h3>
+            <ul class="insight-list" id="insights"></ul>
+        </div>
+
+        <div class="cta-box">
+            <h3>Stop Scope Creep Before It Starts</h3>
+            <p>The Client Intake Autopilot Pack includes scope-creep-proof intake forms, discovery call scripts, and a client red-flag checklist — so you catch problem clients before they cost you money.</p>
+            <a href="https://cleomanagement.gumroad.com/l/client-intake-autopilot-pack" class="cta-btn" target="_blank">Get the Pack — $19</a>
+        </div>
+
+        <div class="share-section">
+            <p>Know a freelancer who needs to see this?</p>
+            <div class="share-links">
+                <a href="#" id="shareTwitter" target="_blank"><i class="fab fa-x-twitter"></i> Share</a>
+                <a href="#" id="shareLinkedin" target="_blank"><i class="fab fa-linkedin"></i> Share</a>
+                <a href="#" id="shareEmail"><i class="fas fa-envelope"></i> Email</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        Built by <a href="https://cleo-ai-ops.github.io/client-intake-autopilot-pack/">Cleo</a> — tools for freelancers who take their business seriously.
+    </footer>
+</div>
+
+<script>
+function calculate() {
+    const rate = parseFloat(document.getElementById('hourlyRate').value) || 0;
+    const projects = parseFloat(document.getElementById('projectsPerMonth').value) || 0;
+    const hours = parseFloat(document.getElementById('creepHours').value) || 0;
+    const pct = parseFloat(document.getElementById('creepPercentage').value) || 0;
+
+    if (rate <= 0 || projects <= 0 || hours <= 0) {
+        alert('Please fill in at least your hourly rate, projects per month, and creep hours.');
+        return;
+    }
+
+    const creepProjectsPerMonth = projects * (pct / 100);
+    const monthlyLoss = creepProjectsPerMonth * hours * rate;
+    const yearlyLoss = monthlyLoss * 12;
+    const lostDays = Math.round(yearlyLoss / (rate * 8));
+    const monthlyRevenue = projects * hours * 4 * rate * 0.4;
+    const grossRevenue = monthlyRevenue * 12;
+    const pctRevenue = grossRevenue > 0 ? Math.round((yearlyLoss / (grossRevenue + yearlyLoss)) * 100) : 0;
+    const yearlyProjects = Math.round(creepProjectsPerMonth * 12);
+
+    document.getElementById('totalCost').textContent = '$' + Math.round(yearlyLoss).toLocaleString();
+    document.getElementById('monthlyCost').textContent = '$' + Math.round(monthlyLoss).toLocaleString();
+    document.getElementById('lostDays').textContent = lostDays;
+    document.getElementById('pctRevenue').textContent = pctRevenue + '%';
+    document.getElementById('creepProjects').textContent = yearlyProjects;
+
+    const insights = [];
+    if (yearlyLoss > 10000) {
+        insights.push('You\'re losing more than <strong>$' + Math.round(yearlyLoss).toLocaleString() + '/year</strong> to scope creep — that\'s a vacation, a new laptop, or a month of rent you\'re giving away.');
+    }
+    if (lostDays > 10) {
+        insights.push('That\'s <strong>' + lostDays + ' full work days</strong> per year you\'re not getting paid for.');
+    }
+    if (pct > 40) {
+        insights.push('Scope creep hits <strong>' + pct + '% of your projects</strong>. If your intake process caught even half, you\'d save <strong>$' + Math.round(yearlyLoss/2).toLocaleString() + '/year</strong>.');
+    }
+    if (hours > 2) {
+        insights.push('At <strong>' + hours + ' extra hours per project</strong>, scope creep isn\'t "just a small thing" — it\'s a systematic revenue leak.');
+    }
+    insights.push('The #1 cause of scope creep? <strong>Vague project boundaries set during intake.</strong> A clear intake process eliminates most scope creep before it starts.');
+    if (yearlyLoss > 5000) {
+        insights.push('For <strong>$19</strong>, the Client Intake Autopilot Pack pays for itself the very first project where you prevent scope creep.');
+    }
+
+    document.getElementById('insights').innerHTML = insights.map(function(i) { return '<li>' + i + '</li>'; }).join('');
+
+    var shareText = 'Scope creep is costing me $' + Math.round(yearlyLoss).toLocaleString() + '/year as a freelancer 😱 Calculate yours:';
+    var shareUrl = window.location.href;
+    document.getElementById('shareTwitter').href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(shareText) + '&url=' + encodeURIComponent(shareUrl);
+    document.getElementById('shareLinkedin').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(shareUrl);
+    document.getElementById('shareEmail').href = 'mailto:?subject=' + encodeURIComponent('Check this scope creep calculator') + '&body=' + encodeURIComponent(shareText + ' ' + shareUrl);
+
+    document.getElementById('results').classList.add('visible');
+    document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
+</body>
+</html>
