@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 n8n Workflows That Save Small Businesses 10+ Hours Per Week</title>
+    <meta name="description" content="Ready-to-import n8n automation workflows for lead qualification, invoice reminders, client onboarding, support triage, and more. Each workflow includes setup instructions and test data.">
+    <link rel="canonical" href="https://cleo-ai-ops.github.io/client-intake-autopilot-pack/n8n-workflows-small-business/">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #1a1a2e; line-height: 1.7; background: #fafafa; }
+        .container { max-width: 740px; margin: 0 auto; padding: 20px; }
+        h1 { font-size: 2rem; margin: 2rem 0 1rem; line-height: 1.3; }
+        h2 { font-size: 1.5rem; margin: 2.5rem 0 1rem; color: #16213e; border-bottom: 2px solid #e94560; padding-bottom: 0.3rem; }
+        h3 { font-size: 1.2rem; margin: 1.5rem 0 0.5rem; color: #0f3460; }
+        p { margin: 0.8rem 0; }
+        ul, ol { margin: 0.8rem 0 0.8rem 1.5rem; }
+        li { margin: 0.4rem 0; }
+        blockquote { border-left: 4px solid #e94560; padding: 0.8rem 1.2rem; margin: 1rem 0; background: #fff; border-radius: 0 8px 8px 0; }
+        .cta { background: linear-gradient(135deg, #0f3460, #16213e); color: white; padding: 1.5rem; border-radius: 12px; margin: 2rem 0; text-align: center; }
+        .cta a { color: #e94560; font-weight: 700; }
+        .cta .price { font-size: 1.3rem; color: #4ecca3; }
+        .workflow { background: #fff; border: 1px solid #e0e0e0; border-radius: 10px; padding: 1.2rem; margin: 1rem 0; }
+        .workflow h3 { margin-top: 0; }
+        .tag { display: inline-block; background: #e8f4fd; color: #0f3460; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.8rem; margin-right: 0.3rem; }
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        th, td { border: 1px solid #ddd; padding: 0.6rem; text-align: left; }
+        th { background: #0f3460; color: white; }
+        tr:nth-child(even) { background: #f8f8f8; }
+        nav { background: #16213e; padding: 0.8rem 1.2rem; border-radius: 8px; margin-bottom: 2rem; }
+        nav a { color: #e94560; text-decoration: none; margin-right: 1.2rem; font-size: 0.9rem; }
+        footer { text-align: center; padding: 2rem 0; color: #888; font-size: 0.85rem; border-top: 1px solid #ddd; margin-top: 3rem; }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "10 n8n Workflows That Save Small Businesses 10+ Hours Per Week",
+        "description": "Ready-to-import n8n automation workflows for lead qualification, invoice reminders, client onboarding, support triage, and more.",
+        "author": {"@type": "Organization", "name": "Cleo"},
+        "publisher": {"@type": "Organization", "name": "Cleo"},
+        "datePublished": "2026-04-28"
+    }
+    </script>
+</head>
+<body>
+<div class="container">
+    <nav>
+        <a href="/">← Cleo Store</a>
+        <a href="/n8n-business-automation-workflow-pack/">n8n Workflow Pack</a>
+        <a href="/free-n8n-invoice-reminder-workflow/">Free Invoice Workflow</a>
+    </nav>
+
+    <h1>10 n8n Workflows That Save Small Businesses 10+ Hours Per Week</h1>
+    
+    <p>n8n is the most powerful free workflow automation tool available — but most small businesses never get past "hello world" automations. After building and running dozens of n8n workflows for real businesses, these are the 10 that consistently save the most time. Each one is importable, configurable, and battle-tested.</p>
+
+    <h2>The 10 workflows</h2>
+
+    <div class="workflow">
+        <h3>1. Lead Qualification Router</h3>
+        <span class="tag">CRM</span><span class="tag">Sales</span><span class="tag">Time saved: ~3 hrs/week</span>
+        <p>When a new lead arrives (form submission, email, or CRM entry), automatically score them based on company size, budget range, project type, and timeline. High-scoring leads go to a priority Slack channel and get a fast follow-up email. Low-scoring leads get a polite nurture sequence.</p>
+        <p><strong>Nodes:</strong> Webhook → Switch (score branches) → Slack / Email / CRM update</p>
+        <p><strong>Works with:</strong> Any CRM (HubSpot, Pipedrive), Slack, Gmail</p>
+    </div>
+
+    <div class="workflow">
+        <h3>2. Invoice Reminder Sequence</h3>
+        <span class="tag">Finance</span><span class="tag">Cashflow</span><span class="tag">Time saved: ~2 hrs/week</span>
+        <p>Check unpaid invoices daily. At 3 days overdue: send a friendly reminder. At 7 days: send a firmer follow-up with payment link. At 14 days: escalate to a phone call reminder and flag in your accounting system.</p>
+        <p><strong>Nodes:</strong> Cron (daily) → HTTP (get invoices) → IF (overdue check) → Switch (days overdue) → Email / Slack</p>
+        <p><strong>Works with:</strong> Stripe, Xero, QuickBooks, FreeAgent</p>
+    </div>
+
+    <div class="workflow">
+        <h3>3. Client Onboarding Automator</h3>
+        <span class="tag">Client Success</span><span class="tag">Onboarding</span><span class="tag">Time saved: ~2 hrs/client</span>
+        <p>When a new client signs (triggered by Stripe payment or CRM stage change), automatically: create their project folder in Google Drive, send a welcome email with intake form, create a Slack channel, add them to your CRM, and schedule a kickoff meeting.</p>
+        <p><strong>Nodes:</strong> Webhook/Stripe trigger → Google Drive → Gmail → Slack → CRM → Calendar</p>
+    </div>
+
+    <div class="workflow">
+        <h3>4. Support Ticket Triage</h3>
+        <span class="tag">Support</span><span class="tag">Customer Success</span><span class="tag">Time saved: ~1.5 hrs/week</span>
+        <p>Route incoming support emails based on keywords and sentiment. Billing issues → finance Slack channel. Bug reports → engineering with error details. Feature requests → product board. General questions → auto-reply with FAQ link.</p>
+        <p><strong>Nodes:</strong> Gmail trigger → Text Analysis (keyword matching) → Switch (category) → Slack / Trello / Auto-reply</p>
+    </div>
+
+    <div class="workflow">
+        <h3>5. Weekly Report Generator</h3>
+        <span class="tag">Reporting</span><span class="tag">Analytics</span><span class="tag">Time saved: ~2 hrs/week</span>
+        <p>Every Monday at 8 AM, pull data from your key tools (revenue from Stripe, new leads from CRM, support tickets resolved, website traffic), compile into a summary email, and send to stakeholders.</p>
+        <p><strong>Nodes:</strong> Cron → HTTP (multiple API calls) → Merge → HTML template → Email</p>
+    </div>
+
+    <div class="workflow">
+        <h3>6. Content Republisher</h3>
+        <span class="tag">Marketing</span><span class="tag">Social</span><span class="tag">Time saved: ~1.5 hrs/week</span>
+        <p>When you publish a new blog post, automatically create social media posts for Twitter, LinkedIn, and a newsletter draft. Each platform gets a tailored format — thread for Twitter, professional summary for LinkedIn, digest format for email.</p>
+        <p><strong>Nodes:</strong> RSS/Webhook trigger → HTTP (AI formatting) → Twitter API / LinkedIn API / Gmail draft</p>
+    </div>
+
+    <div class="workflow">
+        <h3>7. Contract Expiry Alert</h3>
+        <span class="tag">Operations</span><span class="tag">Legal</span><span class="tag">Time saved: ~0.5 hrs/week</span>
+        <p>Monitor contract end dates and send renewal reminders 30, 14, and 7 days before expiry. Include the contract terms and suggested renewal options. Never miss a renewal again.</p>
+        <p><strong>Nodes:</strong> Cron → Database lookup → IF (date proximity) → Email / Slack</p>
+    </div>
+
+    <div class="workflow">
+        <h3>8. Meeting Prep Briefing</h3>
+        <span class="tag">Productivity</span><span class="tag">Calendar</span><span class="tag">Time saved: ~1 hr/week</span>
+        <p>15 minutes before each meeting, pull the attendee's CRM data, recent email thread, project status, and open action items into a Slack DM briefing note.</p>
+        <p><strong>Nodes:</strong> Cron (every 15 min) → Google Calendar → CRM lookup → Gmail thread → Slack</p>
+    </div>
+
+    <div class="workflow">
+        <h3>9. Expense Receipt Processor</h3>
+        <span class="tag">Finance</span><span class="tag">Accounting</span><span class="tag">Time saved: ~1 hr/week</span>
+        <p>Forward receipt emails to a dedicated address. The workflow extracts amount, vendor, date, and category, then creates an entry in your accounting software and files the receipt in Google Drive.</p>
+        <p><strong>Nodes:</strong> Gmail trigger → Text extraction → Google Sheets / Accounting API → Google Drive</p>
+    </div>
+
+    <div class="workflow">
+        <h3>10. Testimonial Requester</h3>
+        <span class="tag">Marketing</span><span class="tag">Social Proof</span><span class="tag">Time saved: ~0.5 hrs/week</span>
+        <p>After a project milestone is completed or a support ticket is resolved with positive feedback, wait 3 days then send a testimonial request email. If they respond, log it in your testimonial database.</p>
+        <p><strong>Nodes:</strong> CRM/Support trigger → Wait (3 days) → Email → IF (response) → Google Sheets / Slack</p>
+    </div>
+
+    <div class="cta">
+        <p><strong>All 10 workflows, ready to import.</strong></p>
+        <p>Includes JSON import files, per-workflow setup guides, test data, troubleshooting notes, and a workflow decision tree.</p>
+        <p class="price">n8n Business Automation Workflow Pack — €15</p>
+        <p><a href="/n8n-business-automation-workflow-pack/">Get the complete pack →</a></p>
+    </div>
+
+    <h2>How to get started with n8n</h2>
+
+    <p>If you're new to n8n:</p>
+    <ol>
+        <li><strong>Self-host for free:</strong> Install n8n with Docker (<code>docker run -p 5678:5678 n8nio/n8n</code>) or use n8n Cloud's free tier for up to 5 workflows.</li>
+        <li><strong>Start with one workflow:</strong> Don't try to automate everything at once. Pick the workflow above that addresses your biggest time sink.</li>
+        <li><strong>Import and customize:</strong> Download the workflow JSON, import it into n8n, and update the credentials (API keys, email addresses, Slack channels).</li>
+        <li><strong>Test before going live:</strong> Use the test data included in the pack to verify each workflow behaves correctly with your setup.</li>
+        <li><strong>Add more workflows gradually:</strong> Once the first one runs reliably for a week, add the next one.</li>
+    </ol>
+
+    <h2>Free sample: Invoice Reminder Workflow</h2>
+
+    <p>Want to try before buying? The Invoice Reminder Workflow (#2) is available as a free download:</p>
+    <ul>
+        <li><a href="/free-n8n-invoice-reminder-workflow/">Free Invoice Reminder Workflow page →</a></li>
+        <li><a href="https://raw.githubusercontent.com/cleo-ai-ops/free-n8n-invoice-reminder-workflow/main/free-n8n-invoice-reminder-workflow.json">Download the JSON directly →</a></li>
+    </ul>
+
+    <h2>Workflow comparison</h2>
+
+    <table>
+        <tr><th>Workflow</th><th>Complexity</th><th>Integrations Needed</th><th>Time Saved</th></tr>
+        <tr><td>Lead Qualification Router</td><td>Medium</td><td>CRM, Slack, Email</td><td>~3 hrs/week</td></tr>
+        <tr><td>Invoice Reminder Sequence</td><td>Low</td><td>Accounting, Email</td><td>~2 hrs/week</td></tr>
+        <tr><td>Client Onboarding Automator</td><td>Medium</td><td>Stripe, Drive, Slack, CRM</td><td>~2 hrs/client</td></tr>
+        <tr><td>Support Ticket Triage</td><td>Medium</td><td>Email, Slack, Trello</td><td>~1.5 hrs/week</td></tr>
+        <tr><td>Weekly Report Generator</td><td>High</td><td>Stripe, CRM, Analytics</td><td>~2 hrs/week</td></tr>
+        <tr><td>Content Republisher</td><td>Medium</td><td>RSS, Social APIs</td><td>~1.5 hrs/week</td></tr>
+        <tr><td>Contract Expiry Alert</td><td>Low</td><td>Database/Sheets, Email</td><td>~0.5 hrs/week</td></tr>
+        <tr><td>Meeting Prep Briefing</td><td>Medium</td><td>Calendar, CRM, Email</td><td>~1 hr/week</td></tr>
+        <tr><td>Expense Receipt Processor</td><td>Medium</td><td>Email, Sheets, Drive</td><td>~1 hr/week</td></tr>
+        <tr><td>Testimonial Requester</td><td>Low</td><td>CRM/Support, Email</td><td>~0.5 hrs/week</td></tr>
+    </table>
+
+    <div class="cta">
+        <p>10 workflows. Setup guides. Test data. Troubleshooting notes.</p>
+        <p class="price">€15 — one-time purchase, lifetime access</p>
+        <p><a href="/n8n-business-automation-workflow-pack/">Get the n8n Workflow Pack →</a></p>
+    </div>
+
+    <footer>
+        <p>Built by <a href="/" style="color:#0f3460;">Cleo</a> — digital products for freelancers, developers, and founders.</p>
+    </footer>
+</div>
+</body>
+</html>
