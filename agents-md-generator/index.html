@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free AGENTS.md Generator for AI Coding Agents</title>
+<meta name="description" content="Generate a free AGENTS.md file for Claude Code, Cursor, Codex, OpenClaw, and AI coding agents. Add stack, commands, red lines, and definition of done.">
+<style>body{font-family:Inter,system-ui,sans-serif;margin:0;background:#0f172a;color:#e5e7eb}main{max-width:1050px;margin:auto;padding:42px 18px}h1{font-size:clamp(2rem,5vw,4rem);line-height:1;margin-bottom:12px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}@media(max-width:850px){.grid{grid-template-columns:1fr}}label{display:block;margin:12px 0 6px;font-weight:800}input,textarea{width:100%;box-sizing:border-box;border:1px solid #334155;border-radius:10px;background:#020617;color:#f8fafc;padding:11px;font:inherit}textarea{min-height:82px}.card{background:#111827;border:1px solid #334155;border-radius:18px;padding:20px}.btn{display:inline-block;border:0;border-radius:12px;background:#38bdf8;color:#062032;font-weight:900;padding:13px 17px;margin:10px 8px 10px 0;text-decoration:none;cursor:pointer}pre{white-space:pre-wrap;background:#020617;border:1px solid #334155;border-radius:14px;padding:18px;min-height:520px;overflow:auto}.muted{color:#cbd5e1;line-height:1.6}.secondary{background:#334155;color:#e5e7eb}</style></head><body><main>
+<p class="muted"><strong>Free developer tool</strong> · for Claude Code, Cursor, Codex, OpenClaw, and similar agents</p>
+<h1>Generate an AGENTS.md file for your repo in 2 minutes.</h1>
+<p class="muted">AI coding agents work better when your repo has clear commands, boundaries, and success criteria. Fill this once, copy the file into your repository root, and give every agent the same operating manual.</p>
+<div class="grid"><section class="card"><h2>Repo details</h2>
+<label>Project name</label><input id="project" value="My SaaS App">
+<label>Project goal</label><textarea id="goal">Help users manage subscriptions and billing without breaking payment or auth flows.</textarea>
+<label>Stack</label><textarea id="stack">TypeScript, Next.js, PostgreSQL, Stripe, Vercel</textarea>
+<label>Install command</label><input id="install" value="npm install">
+<label>Test command</label><input id="test" value="npm test">
+<label>Typecheck command</label><input id="typecheck" value="npm run typecheck">
+<label>Lint command</label><input id="lint" value="npm run lint">
+<label>Build command</label><input id="build" value="npm run build">
+<label>Red lines / never do</label><textarea id="redlines">Never commit secrets. Never weaken auth, payment, or permission checks. Never delete production data or migrations without explicit approval.</textarea>
+<button class="btn" onclick="generate()">Generate AGENTS.md</button><button class="btn secondary" onclick="copyOut()">Copy output</button>
+<p class="muted">Need more than AGENTS.md? The paid starter kit adds CLAUDE.md, Cursor rules, safe command policy, issue templates, prompt briefs, handoff checklist, and PR checklist.</p><p><a class="btn" href="https://cleo-ai-ops.github.io/client-intake-autopilot-pack/ai-coding-agent-project-starter-kit/">Get the full €9 kit</a><a class="btn secondary" href="https://github.com/cleo-ai-ops/free-ai-coding-agent-project-template">View free GitHub repo</a></p>
+</section><section class="card"><h2>Your AGENTS.md</h2><pre id="out"></pre></section></div>
+<script>
+const $=id=>document.getElementById(id);function esc(s){return s.trim()||'TODO'}
+function generate(){const lines=`# AGENTS.md\n\n## Project\n${esc($('project').value)}\n\n## Goal\n${esc($('goal').value)}\n\n## Stack\n${esc($('stack').value).split('\n').map(x=>'- '+x).join('\n')}\n\n## Commands\n- Install: \`${esc($('install').value)}\`\n- Test: \`${esc($('test').value)}\`\n- Typecheck: \`${esc($('typecheck').value)}\`\n- Lint: \`${esc($('lint').value)}\`\n- Build: \`${esc($('build').value)}\`\n\n## Working rules for AI coding agents\n- Read relevant files before editing.\n- Prefer the smallest safe change that solves the task.\n- Follow existing project patterns before adding new abstractions.\n- Do not invent APIs, environment variables, or configuration names.\n- Add or update tests when behavior changes.\n- Run the smallest meaningful verification before claiming success.\n- If a check cannot run, state the exact blocker and command attempted.\n\n## Red lines\n${esc($('redlines').value).split('\n').map(x=>'- '+x).join('\n')}\n\n## Definition of done\n- Requested change implemented.\n- Relevant tests/checks run or clearly blocked.\n- Changed files summarized.\n- Risks and follow-ups noted.\n`; $('out').textContent=lines} async function copyOut(){await navigator.clipboard.writeText($('out').textContent); alert('Copied AGENTS.md')} generate();
+</script></main></body></html>
