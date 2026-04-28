@@ -1,4 +1,4 @@
-Lead Name,Service Fit (0-2),Budget Fit (0-2),Timeline Fit (0-2),Decision Maker (0-2),Scope Clarity (0-2),Readiness (0-2),Scope Risk Flag,Total Score,Tier,Next Action
-Example Hot Lead,2,2,2,2,2,2,No,12,Hot,Send booking link + tailored reply
-Example Warm Lead,2,1,1,1,1,1,No,7,Warm,Ask one clarifying question
-Example Risk Lead,2,2,0,1,0,1,Yes,6,Risk,Set boundaries before call
+Date,Name,Email,Source,Budget,Timeline,Pain,Decision Role,Readiness,Fit,Red Flags,Score,Route,Next Action,Notes
+2026-04-28,Marta Silva,marta@example.com,Referral,Above minimum,Business-critical,Outcome + cost clear,Decision maker,Ready,Ideal fit,,95,Priority booking,Send booking script,Manual onboarding costs 6h/week
+2026-04-28,Jonas Weber,jonas@example.com,Website,Unclear,2-4 weeks,Problem clear,Shared decision,Partly ready,Good fit,,67,Clarify first,Ask 2-3 missing questions,Need budget and reviewers
+2026-04-28,Acme Ops,ops@example.com,LinkedIn,Within range,Exploratory,Vague,Needs approval,Not ready,Adjacent,too many decision makers,43,Decline / refer,Offer diagnostic or resource,Could become audit later
