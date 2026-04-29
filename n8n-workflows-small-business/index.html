@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>10 n8n Workflows That Save Small Businesses 10+ Hours Per Week</title>
+    <title>10 Practical n8n Workflow Ideas for Small Businesses</title>
     <meta name="description" content="Ready-to-import n8n automation workflows for lead qualification, invoice reminders, client onboarding, support triage, and more. Each workflow includes setup instructions and test data.">
     <link rel="canonical" href="https://cleo-ai-ops.github.io/client-intake-autopilot-pack/n8n-workflows-small-business/">
     <style>
@@ -35,7 +35,7 @@
     {
         "@context": "https://schema.org",
         "@type": "Article",
-        "headline": "10 n8n Workflows That Save Small Businesses 10+ Hours Per Week",
+        "headline": "10 Practical n8n Workflow Ideas for Small Businesses",
         "description": "Ready-to-import n8n automation workflows for lead qualification, invoice reminders, client onboarding, support triage, and more.",
         "author": {"@type": "Organization", "name": "Cleo"},
         "publisher": {"@type": "Organization", "name": "Cleo"},
@@ -51,7 +51,7 @@
         <a href="/free-n8n-invoice-reminder-workflow/">Free Invoice Workflow</a>
     </nav>
 
-    <h1>10 n8n Workflows That Save Small Businesses 10+ Hours Per Week</h1>
+    <h1>10 Practical n8n Workflow Ideas for Small Businesses</h1>
     
     <p>n8n is the most powerful free workflow automation tool available — but most small businesses never get past "hello world" automations. These are 10 practical workflow patterns small businesses can adapt first. Each paid workflow is importable, configurable, and includes setup notes plus test data.</p>
 
@@ -59,7 +59,7 @@
 
     <div class="workflow">
         <h3>1. Lead Qualification Router</h3>
-        <span class="tag">CRM</span><span class="tag">Sales</span><span class="tag">Time saved: ~3 hrs/week</span>
+        <span class="tag">CRM</span><span class="tag">Sales</span><span class="tag">Setup pattern</span>
         <p>When a new lead arrives (form submission, email, or CRM entry), automatically score them based on company size, budget range, project type, and timeline. High-scoring leads go to a priority Slack channel and get a fast follow-up email. Low-scoring leads get a polite nurture sequence.</p>
         <p><strong>Nodes:</strong> Webhook → Switch (score branches) → Slack / Email / CRM update</p>
         <p><strong>Works with:</strong> Any CRM (HubSpot, Pipedrive), Slack, Gmail</p>
@@ -67,7 +67,7 @@
 
     <div class="workflow">
         <h3>2. Invoice Reminder Sequence</h3>
-        <span class="tag">Finance</span><span class="tag">Cashflow</span><span class="tag">Time saved: ~2 hrs/week</span>
+        <span class="tag">Finance</span><span class="tag">Cashflow</span><span class="tag">Setup pattern</span>
         <p>Check unpaid invoices daily. At 3 days overdue: send a friendly reminder. At 7 days: send a firmer follow-up with payment link. At 14 days: escalate to a phone call reminder and flag in your accounting system.</p>
         <p><strong>Nodes:</strong> Cron (daily) → HTTP (get invoices) → IF (overdue check) → Switch (days overdue) → Email / Slack</p>
         <p><strong>Works with:</strong> Stripe, Xero, QuickBooks, FreeAgent</p>
@@ -75,56 +75,56 @@
 
     <div class="workflow">
         <h3>3. Client Onboarding Automator</h3>
-        <span class="tag">Client Success</span><span class="tag">Onboarding</span><span class="tag">Time saved: ~2 hrs/client</span>
+        <span class="tag">Client Success</span><span class="tag">Onboarding</span><span class="tag">Setup pattern</span>
         <p>When a new client signs (triggered by Stripe payment or CRM stage change), automatically: create their project folder in Google Drive, send a welcome email with intake form, create a Slack channel, add them to your CRM, and schedule a kickoff meeting.</p>
         <p><strong>Nodes:</strong> Webhook/Stripe trigger → Google Drive → Gmail → Slack → CRM → Calendar</p>
     </div>
 
     <div class="workflow">
         <h3>4. Support Ticket Triage</h3>
-        <span class="tag">Support</span><span class="tag">Customer Success</span><span class="tag">Time saved: ~1.5 hrs/week</span>
+        <span class="tag">Support</span><span class="tag">Customer Success</span><span class="tag">Setup pattern</span>
         <p>Route incoming support emails based on keywords and sentiment. Billing issues → finance Slack channel. Bug reports → engineering with error details. Feature requests → product board. General questions → auto-reply with FAQ link.</p>
         <p><strong>Nodes:</strong> Gmail trigger → Text Analysis (keyword matching) → Switch (category) → Slack / Trello / Auto-reply</p>
     </div>
 
     <div class="workflow">
         <h3>5. Weekly Report Generator</h3>
-        <span class="tag">Reporting</span><span class="tag">Analytics</span><span class="tag">Time saved: ~2 hrs/week</span>
+        <span class="tag">Reporting</span><span class="tag">Analytics</span><span class="tag">Setup pattern</span>
         <p>Every Monday at 8 AM, pull data from your key tools (revenue from Stripe, new leads from CRM, support tickets resolved, website traffic), compile into a summary email, and send to stakeholders.</p>
         <p><strong>Nodes:</strong> Cron → HTTP (multiple API calls) → Merge → HTML template → Email</p>
     </div>
 
     <div class="workflow">
         <h3>6. Content Republisher</h3>
-        <span class="tag">Marketing</span><span class="tag">Social</span><span class="tag">Time saved: ~1.5 hrs/week</span>
+        <span class="tag">Marketing</span><span class="tag">Social</span><span class="tag">Setup pattern</span>
         <p>When you publish a new blog post, automatically create social media posts for Twitter, LinkedIn, and a newsletter draft. Each platform gets a tailored format — thread for Twitter, professional summary for LinkedIn, digest format for email.</p>
         <p><strong>Nodes:</strong> RSS/Webhook trigger → HTTP (AI formatting) → Twitter API / LinkedIn API / Gmail draft</p>
     </div>
 
     <div class="workflow">
         <h3>7. Contract Expiry Alert</h3>
-        <span class="tag">Operations</span><span class="tag">Legal</span><span class="tag">Time saved: ~0.5 hrs/week</span>
+        <span class="tag">Operations</span><span class="tag">Legal</span><span class="tag">Setup pattern</span>
         <p>Monitor contract end dates and send renewal reminders 30, 14, and 7 days before expiry. Include the contract terms and suggested renewal options. Never miss a renewal again.</p>
         <p><strong>Nodes:</strong> Cron → Database lookup → IF (date proximity) → Email / Slack</p>
     </div>
 
     <div class="workflow">
         <h3>8. Meeting Prep Briefing</h3>
-        <span class="tag">Productivity</span><span class="tag">Calendar</span><span class="tag">Time saved: ~1 hr/week</span>
+        <span class="tag">Productivity</span><span class="tag">Calendar</span><span class="tag">Setup pattern</span>
         <p>15 minutes before each meeting, pull the attendee's CRM data, recent email thread, project status, and open action items into a Slack DM briefing note.</p>
         <p><strong>Nodes:</strong> Cron (every 15 min) → Google Calendar → CRM lookup → Gmail thread → Slack</p>
     </div>
 
     <div class="workflow">
         <h3>9. Expense Receipt Processor</h3>
-        <span class="tag">Finance</span><span class="tag">Accounting</span><span class="tag">Time saved: ~1 hr/week</span>
+        <span class="tag">Finance</span><span class="tag">Accounting</span><span class="tag">Setup pattern</span>
         <p>Forward receipt emails to a dedicated address. The workflow extracts amount, vendor, date, and category, then creates an entry in your accounting software and files the receipt in Google Drive.</p>
         <p><strong>Nodes:</strong> Gmail trigger → Text extraction → Google Sheets / Accounting API → Google Drive</p>
     </div>
 
     <div class="workflow">
         <h3>10. Testimonial Requester</h3>
-        <span class="tag">Marketing</span><span class="tag">Social Proof</span><span class="tag">Time saved: ~0.5 hrs/week</span>
+        <span class="tag">Marketing</span><span class="tag">Social Proof</span><span class="tag">Setup pattern</span>
         <p>After a project milestone is completed or a support ticket is resolved with positive feedback, wait 3 days then send a testimonial request email. If they respond, log it in your testimonial database.</p>
         <p><strong>Nodes:</strong> CRM/Support trigger → Wait (3 days) → Email → IF (response) → Google Sheets / Slack</p>
     </div>
@@ -158,17 +158,17 @@
     <h2>Workflow comparison</h2>
 
     <table>
-        <tr><th>Workflow</th><th>Complexity</th><th>Integrations Needed</th><th>Time Saved</th></tr>
-        <tr><td>Lead Qualification Router</td><td>Medium</td><td>CRM, Slack, Email</td><td>~3 hrs/week</td></tr>
-        <tr><td>Invoice Reminder Sequence</td><td>Low</td><td>Accounting, Email</td><td>~2 hrs/week</td></tr>
-        <tr><td>Client Onboarding Automator</td><td>Medium</td><td>Stripe, Drive, Slack, CRM</td><td>~2 hrs/client</td></tr>
-        <tr><td>Support Ticket Triage</td><td>Medium</td><td>Email, Slack, Trello</td><td>~1.5 hrs/week</td></tr>
-        <tr><td>Weekly Report Generator</td><td>High</td><td>Stripe, CRM, Analytics</td><td>~2 hrs/week</td></tr>
-        <tr><td>Content Republisher</td><td>Medium</td><td>RSS, Social APIs</td><td>~1.5 hrs/week</td></tr>
-        <tr><td>Contract Expiry Alert</td><td>Low</td><td>Database/Sheets, Email</td><td>~0.5 hrs/week</td></tr>
-        <tr><td>Meeting Prep Briefing</td><td>Medium</td><td>Calendar, CRM, Email</td><td>~1 hr/week</td></tr>
-        <tr><td>Expense Receipt Processor</td><td>Medium</td><td>Email, Sheets, Drive</td><td>~1 hr/week</td></tr>
-        <tr><td>Testimonial Requester</td><td>Low</td><td>CRM/Support, Email</td><td>~0.5 hrs/week</td></tr>
+        <tr><th>Workflow</th><th>Complexity</th><th>Integrations Needed</th><th>Best fit</th></tr>
+        <tr><td>Lead Qualification Router</td><td>Medium</td><td>CRM, Slack, Email</td><td>Lead-heavy teams</td></tr>
+        <tr><td>Invoice Reminder Sequence</td><td>Low</td><td>Accounting, Email</td><td>Recurring admin</td></tr>
+        <tr><td>Client Onboarding Automator</td><td>Medium</td><td>Stripe, Drive, Slack, CRM</td><td>New-client setup</td></tr>
+        <tr><td>Support Ticket Triage</td><td>Medium</td><td>Email, Slack, Trello</td><td>Repeated routing</td></tr>
+        <tr><td>Weekly Report Generator</td><td>High</td><td>Stripe, CRM, Analytics</td><td>Recurring admin</td></tr>
+        <tr><td>Content Republisher</td><td>Medium</td><td>RSS, Social APIs</td><td>Repeated routing</td></tr>
+        <tr><td>Contract Expiry Alert</td><td>Low</td><td>Database/Sheets, Email</td><td>Reminder hygiene</td></tr>
+        <tr><td>Meeting Prep Briefing</td><td>Medium</td><td>Calendar, CRM, Email</td><td>Weekly routine</td></tr>
+        <tr><td>Expense Receipt Processor</td><td>Medium</td><td>Email, Sheets, Drive</td><td>Weekly routine</td></tr>
+        <tr><td>Testimonial Requester</td><td>Low</td><td>CRM/Support, Email</td><td>Reminder hygiene</td></tr>
     </table>
 
     <div class="cta">
