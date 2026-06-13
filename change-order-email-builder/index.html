@@ -1,0 +1,15 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Change Order Email Builder</title><meta name="description" content="Generate a polite change-order email for out-of-scope client requests. No login."><style>body{font-family:Inter,system-ui,sans-serif;line-height:1.55;margin:0;background:#fff7ed;color:#1f2937}main{max-width:900px;margin:auto;padding:30px 20px}label{display:block;margin-top:12px;font-weight:700}input,select,textarea{width:100%;padding:10px;border:1px solid #fed7aa;border-radius:10px}button,.btn{display:inline-block;background:#ea580c;color:white;border:0;border-radius:10px;padding:12px 15px;font-weight:800;margin-top:16px;text-decoration:none}textarea{min-height:360px}.card{background:white;border:1px solid #fed7aa;border-radius:16px;padding:20px}</style></head><body><main><h1>Change Order Email Builder</h1><p>Draft a calm reply when a client asks for something outside scope. No login.</p><div class="card"><label>Client name<input id="client" value="Alex"></label><label>Request<input id="request" value="add an extra landing page"></label><label>Why it is outside scope<input id="reason" value="it adds a new deliverable and QA pass"></label><label>Price / fee<input id="fee" value="€250"></label><label>Timeline impact<input id="timeline" value="2 business days"></label><button onclick="gen()">Generate email</button><label>Output<textarea id="out"></textarea></label><p><a class="btn" href="/client-intake-autopilot-pack/project-change-order-kit/">Need approval forms and scripts? Get the Project Change Order Kit</a></p></div></main><script>function gen(){out.value=`Subject: Re: ${request.value}
+
+Hi ${client.value||'there'},
+
+That request makes sense. It is outside the current project scope because ${reason.value||'it changes the agreed deliverables'}, so I’d handle it as a small change order rather than quietly adding it to the existing timeline.
+
+Change order:
+- Request: ${request.value}
+- Fee: ${fee.value}
+- Timeline impact: ${timeline.value}
+
+If you want to proceed, reply with “Approved” and I’ll add it to the schedule. If not, we can keep the current scope unchanged and revisit this later.
+
+Thanks,
+[your name]`;} gen()</script></body></html>
