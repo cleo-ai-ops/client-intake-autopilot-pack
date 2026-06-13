@@ -1,0 +1,36 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bug Report Customer Reply Generator</title><meta name="description" content="Generate customer-safe replies for bug reports: ask for details, confirm reproduction, share workaround, or close the loop. No login."><style>body{font-family:Inter,system-ui,sans-serif;line-height:1.55;margin:0;background:#eff6ff;color:#172554}main{max-width:920px;margin:auto;padding:30px 20px}label{display:block;margin-top:12px;font-weight:700}input,select,textarea{width:100%;padding:10px;border:1px solid #bfdbfe;border-radius:10px}button,.btn{display:inline-block;background:#1d4ed8;color:white;border:0;border-radius:10px;padding:12px 15px;font-weight:800;margin-top:16px;text-decoration:none}textarea{min-height:360px}.card{background:white;border:1px solid #bfdbfe;border-radius:16px;padding:20px}</style></head><body><main><h1>Bug Report Customer Reply Generator</h1><p>Draft a calm support reply for a bug report without promising a fix too early. No login.</p><div class="card"><label>Customer name<input id="name" value="Alex"></label><label>Bug summary<input id="bug" value="Invoice PDF download fails"></label><label>Status<select id="status"><option value="need-details">Need more details</option><option value="reproduced">Reproduced and logged</option><option value="workaround">Workaround available</option><option value="not-reproduced">Not reproduced yet</option><option value="resolved">Resolved / closing loop</option></select></label><label>Workaround or next step<input id="next" value="try exporting from Billing → Invoices while we investigate"></label><button onclick="gen()">Generate reply</button><label>Output<textarea id="out"></textarea></label><p><a class="btn" href="/client-intake-autopilot-pack/bug-report-triage-kit/">Need the full triage templates? Get the Bug Report Triage Kit</a></p></div></main><script>function gen(){const n=name.value||'there', b=bug.value||'this issue', x=next.value||'I will update you when I know more'; let s=status.value; let msg=''; if(s==='need-details') msg=`Hi ${n},
+
+Thanks for flagging ${b}. I want to reproduce it accurately before guessing at the cause. Could you send the exact steps you took, the page affected, your browser/device, any screenshot or error message, and the approximate time it happened?
+
+Once I have that, I’ll check the logs and confirm the next step.
+
+Thanks,
+[your name]`; if(s==='reproduced') msg=`Hi ${n},
+
+I reproduced ${b} and logged it for a fix. Current status: under review.
+
+I’m avoiding a fix-date promise until the cause is confirmed, but I’ll update you when there is a confirmed change or if we need more detail.
+
+Thanks for the clear report,
+[your name]`; if(s==='workaround') msg=`Hi ${n},
+
+Thanks again for reporting ${b}. We’re still investigating the underlying cause. In the meantime, the best workaround is: ${x}.
+
+I’ll keep this tied to the bug report so we can follow up once there is a confirmed fix.
+
+Thanks,
+[your name]`; if(s==='not-reproduced') msg=`Hi ${n},
+
+I tested ${b} and couldn’t reproduce it yet. That doesn’t mean the issue isn’t real — it means I need one more clue before opening the right fix path.
+
+Could you confirm: ${x}?
+
+Thanks,
+[your name]`; if(s==='resolved') msg=`Hi ${n},
+
+This should now be resolved for ${b}. Please try again when you have a moment.
+
+If it still happens, reply with a screenshot or the exact time it occurred and I’ll reopen the ticket with that evidence.
+
+Thanks,
+[your name]`; out.value=msg} gen()</script></body></html>
