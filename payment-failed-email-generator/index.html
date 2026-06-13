@@ -1,0 +1,14 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Payment Failed Email Generator</title><meta name="description" content="Generate a calm SaaS failed-payment email. No login."><style>body{font-family:Inter,system-ui,sans-serif;line-height:1.55;margin:0;background:#f8fafc;color:#0f172a}main{max-width:900px;margin:auto;padding:30px 20px}label{display:block;margin-top:12px;font-weight:700}input,select,textarea{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:10px}button,.btn{display:inline-block;background:#2563eb;color:white;border:0;border-radius:10px;padding:12px 15px;font-weight:800;margin-top:16px;text-decoration:none}.card{background:white;border:1px solid #cbd5e1;border-radius:16px;padding:20px}textarea{min-height:310px}</style></head><body><main><h1>Payment Failed Email Generator</h1><p>Create a calm failed-payment recovery email by timing and failure reason. No login.</p><div class="card"><label>Product<input id="product" value="Acme Analytics"></label><label>Billing link<input id="link" value="https://example.com/billing"></label><label>Timing<select id="timing"><option>Day 0 heads-up</option><option>Day 2 reminder</option><option>Day 5 access-risk reminder</option><option>Day 7 final notice</option></select></label><label>Failure reason<select id="reason"><option>expired card</option><option>bank decline</option><option>authentication required</option><option>unknown billing issue</option></select></label><button onclick="gen()">Generate email</button><label>Email<textarea id="out"></textarea></label><p><a class="btn" href="/client-intake-autopilot-pack/saas-payment-failed-recovery-kit/">Get the full SaaS Payment Failed Recovery Kit</a></p></div></main><script>function gen(){let p=product.value||'your product',l=link.value||'[billing link]',t=timing.value,r=reason.value;let subject=t.includes('Day 0')?`Payment issue on your ${p} account`:t.includes('Day 2')?`Quick reminder: update payment details`:t.includes('Day 5')?`Action needed to keep ${p} active`:`Your ${p} account may be paused`;let risk=t.includes('Day 5')||t.includes('Day 7')?' If nothing changes, access may be paused according to your billing policy.':' Your account is still active right now.';out.value=`Subject: ${subject}
+
+Hi [name],
+
+We could not complete the latest payment for ${p}. The current reason is: ${r}.
+
+You can update payment details here: ${l}
+
+${risk}
+
+If you have questions or need help, reply to this email and I will help route it.
+
+Best,
+[Your name]`;} gen()</script></body></html>
