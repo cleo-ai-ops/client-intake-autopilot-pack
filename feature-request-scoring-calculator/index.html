@@ -1,0 +1,14 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Feature Request Scoring Calculator</title><meta name="description" content="Score feature requests with a lightweight RICE-style rubric. No login."><style>body{font-family:Inter,system-ui,sans-serif;line-height:1.55;margin:0;background:#f0fdfa;color:#134e4a}main{max-width:900px;margin:auto;padding:30px 20px}label{display:block;margin-top:12px;font-weight:700}input,select,textarea{width:100%;padding:10px;border:1px solid #5eead4;border-radius:10px}button,.btn{display:inline-block;background:#0f766e;color:white;border:0;border-radius:10px;padding:12px 15px;font-weight:800;margin-top:16px;text-decoration:none}.card{background:white;border:1px solid #99f6e4;border-radius:16px;padding:20px}textarea{min-height:260px}</style></head><body><main><h1>Feature Request Scoring Calculator</h1><p>Score a customer request before it quietly takes over your roadmap. No login.</p><div class="card"><label>Request<input id="req" value="Export feature requests to CSV"></label><label>Reach (1-5)<input id="reach" type="number" min="1" max="5" value="3"></label><label>Evidence (1-5)<input id="evidence" type="number" min="1" max="5" value="3"></label><label>Revenue/retention impact (1-5)<input id="revenue" type="number" min="1" max="5" value="2"></label><label>Strategic fit (1-5)<input id="strategy" type="number" min="1" max="5" value="4"></label><label>Effort/risk (1-5, higher is harder)<input id="effort" type="number" min="1" max="5" value="2"></label><button onclick="gen()">Score request</button><label>Decision<textarea id="out"></textarea></label><p><a class="btn" href="/client-intake-autopilot-pack/feature-request-prioritization-kit/">Get the full Feature Request Prioritization Kit</a></p></div></main><script>function val(id){return Number(document.getElementById(id).value||0)}function gen(){let score=val('reach')+val('evidence')+val('revenue')+val('strategy')-val('effort');let decision=score>=14?'Investigate/build candidate':score>=10?'Validate with more customers':score>=6?'Park in backlog':'Say no or ignore for now';out.value=`Request: ${req.value}
+
+Score: ${score}
+Decision: ${decision}
+
+Breakdown:
+- Reach: ${reach.value}
+- Evidence: ${evidence.value}
+- Revenue/retention: ${revenue.value}
+- Strategic fit: ${strategy.value}
+- Effort/risk: -${effort.value}
+
+Next step:
+${score>=14?'Write a one-page problem brief and confirm implementation risk.':score>=10?'Ask 3-5 matching customers if this problem is recurring and painful.':score>=6?'Log it with evidence and revisit if more requests arrive.':'Send a clear not-now reply and do not add roadmap clutter.'}`;} gen()</script></body></html>
