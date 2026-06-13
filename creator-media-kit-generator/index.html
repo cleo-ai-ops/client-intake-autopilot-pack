@@ -1,0 +1,31 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Creator Media Kit Generator</title><meta name="description" content="Generate a simple one-page creator media kit draft for sponsor outreach. No login."><style>body{font-family:Inter,system-ui,sans-serif;margin:0;line-height:1.55;background:#fff7ed;color:#1f2937}main{max-width:980px;margin:auto;padding:30px 20px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.card{background:white;border:1px solid #fed7aa;border-radius:16px;padding:20px}label{display:block;font-weight:750;margin-top:12px}input,textarea,select{width:100%;box-sizing:border-box;padding:10px;border:1px solid #fed7aa;border-radius:10px;font:inherit}textarea{min-height:150px}button,.btn{display:inline-block;background:#ea580c;color:white;border:0;border-radius:10px;padding:12px 15px;font-weight:800;margin-top:16px;text-decoration:none}#out{min-height:520px;white-space:pre-wrap}.muted{color:#7c2d12}</style></head><body><main><p class="muted">Free creator sponsorship tool</p><h1>Creator Media Kit Generator</h1><p>Turn your audience, topics, proof points, and placement options into a clean sponsor-ready media kit draft. No login.</p><div class="grid"><section class="card"><label>Creator/channel name<input id="creator" value="The Practical Ops Newsletter"></label><label>Audience summary<input id="audience" value="2,800 freelancers and solo operators who want simpler client and revenue systems"></label><label>Core topics<input id="topics" value="client systems, pricing, operations, sponsorship-safe tool recommendations"></label><label>Proof points<textarea id="proof">44% average open rate
+8-12 thoughtful replies per issue
+Audience includes consultants, agency owners, and SaaS solo founders</textarea></label><label>Placements<textarea id="placements">Primary newsletter sponsor
+Short classified listing
+LinkedIn companion post</textarea></label><label>Contact / next step<input id="contact" value="Reply to this email for dates and fit"></label><button onclick="gen()">Generate media kit draft</button></section><section class="card"><label>Your media kit draft<textarea id="out"></textarea></label><button onclick="navigator.clipboard.writeText(out.value)">Copy draft</button><p><a class="btn" href="/client-intake-autopilot-pack/creator-sponsorship-pitch-kit/">Get the full Creator Sponsorship Pitch Kit</a></p></section></div></main><script>function clean(s){return s.split('
+').map(x=>x.trim()).filter(Boolean).map(x=>'• '+x).join('
+')}function gen(){let creator=document.getElementById('creator').value||'[Creator/channel]';let audience=document.getElementById('audience').value||'[Audience summary]';let topics=document.getElementById('topics').value||'[Topics]';let proof=clean(document.getElementById('proof').value||'[Proof point]');let placements=clean(document.getElementById('placements').value||'[Placement]');let contact=document.getElementById('contact').value||'[Contact]';out.value=`${creator} — sponsor media kit draft
+
+Audience
+${audience}
+
+What the audience cares about
+${topics}
+
+Why sponsorship may fit
+This audience is narrow enough for a small, measurable sponsorship test. Best-fit sponsors solve a real problem around one of the topics above and can offer a clear next step.
+
+Proof / engagement signals
+${proof}
+
+Available placements
+${placements}
+
+Suggested first test
+Start with one focused placement, one clear call to action, and a short post-campaign recap covering clicks/views/replies or qualitative feedback you can honestly provide.
+
+Sponsor-fit note
+I only recommend testing brands that are relevant to the audience and that I can describe clearly without overstating results.
+
+Next step
+${contact}`;}gen()</script></body></html>
