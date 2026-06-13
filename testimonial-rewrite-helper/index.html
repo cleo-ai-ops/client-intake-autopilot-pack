@@ -1,0 +1,17 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Testimonial Rewrite Helper</title><meta name="description" content="Turn vague client praise into a clearer testimonial draft for client approval. No login."><style>body{font-family:Inter,system-ui,sans-serif;line-height:1.55;margin:0;background:#f8fafc;color:#172033}main{max-width:920px;margin:auto;padding:30px 20px}.card{background:white;border:1px solid #e5e7eb;border-radius:16px;padding:20px;margin:16px 0}label{display:block;margin-top:12px;font-weight:800}input,textarea,select{width:100%;box-sizing:border-box;padding:10px;border:1px solid #cbd5e1;border-radius:10px}textarea{min-height:110px}#out{min-height:360px}button,.btn{display:inline-block;background:#4f46e5;color:white;border:0;border-radius:10px;padding:12px 15px;font-weight:800;margin-top:16px;text-decoration:none}small{color:#475569}</style></head><body><main><h1>Testimonial Rewrite Helper</h1><p>Turn vague client praise into a specific testimonial draft you can send back for approval. No login; runs in your browser.</p><div class="card"><label>Original client feedback<textarea id="raw">Great work, really happy with the result and easy to work with.</textarea></label><label>Before / problem<input id="before" value="we had a confusing onboarding flow"></label><label>After / result<input id="after" value="new customers now understand the setup steps faster"></label><label>Audience / buyer<input id="audience" value="B2B SaaS founders"></label><label>Permission style<select id="style"><option>named quote</option><option>anonymous quote</option><option>case-study snippet</option></select></label><button onclick="gen()">Create approval draft</button><label>Draft for client approval<textarea id="out"></textarea></label><small>Important: do not publish this as a testimonial until the client explicitly approves the final wording.</small><p><a class="btn" href="/client-intake-autopilot-pack/client-testimonial-request-kit/">Get the full Client Testimonial Request Kit — €4.50</a></p></div><div class="card"><h2>What makes the rewrite stronger?</h2><ul><li>It keeps the client’s intent but adds context.</li><li>It names the before state and after change.</li><li>It avoids invented metrics or claims.</li><li>It includes explicit final-approval wording.</li></ul></div></main><script>function clean(x){return (x||'').trim()} function gen(){let r=clean(raw.value), b=clean(before.value), a=clean(after.value), aud=clean(audience.value), s=style.value; let attribution=s==='anonymous quote'?'— [role/company type]':'— [client name], [company]'; let quote=`Before working together, ${b||'we had a problem we needed to fix'}. The process was clear and easy to follow, and ${a||'we ended with a better result'}. I’d recommend this to ${aud||'teams with a similar challenge'}.`; if(s==='case-study snippet') quote=`Challenge: ${b}
+
+What changed: ${a}
+
+Client feedback: “${r}”`; out.value=`Suggested testimonial draft for approval:
+
+“${quote}”
+${attribution}
+
+Approval note to send:
+
+Hi [name],
+
+Based on your feedback, I drafted the testimonial above. I kept the meaning of what you said and added context about the before/after result. Are you comfortable with me using this exact wording publicly? I’m happy to edit, anonymize, or not use it if it does not feel right.
+
+Thanks,
+[your name]`} gen()</script></body></html>
