@@ -1,0 +1,16 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Backup Drill Checklist Generator</title><meta name="description" content="Generate a self-hosted backup restore-test checklist for Docker Compose services."><style>body{font-family:Inter,system-ui,sans-serif;line-height:1.55;margin:0;background:#f8fafc;color:#172033}main{max-width:880px;margin:auto;padding:30px 20px}label{display:block;margin-top:12px;font-weight:700}input,select,textarea{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:10px}button,.btn{display:inline-block;background:#047857;color:white;border:0;border-radius:10px;padding:12px 15px;font-weight:800;margin-top:16px;text-decoration:none}textarea{min-height:280px}.card{background:white;border:1px solid #e5e7eb;border-radius:16px;padding:20px}</style></head><body><main><h1>Backup Drill Checklist Generator</h1><p>Generate a restore-test checklist for one self-hosted service. No login, no tracking form.</p><div class="card"><label>Service name<input id="svc" value="Vaultwarden"></label><label>Data type<select id="type"><option>Docker volume + SQLite</option><option>Docker volume + Postgres</option><option>Docker volume + MySQL/MariaDB</option><option>File/media library</option></select></label><label>Backup tool<input id="tool" value="restic"></label><label>Restore target<input id="target" value="/tmp/restore-test"></label><button onclick="gen()">Generate checklist</button><label>Checklist<textarea id="out"></textarea></label><p><a class="btn" href="/client-intake-autopilot-pack/self-hosted-backup-drill-kit/">Need full runbooks and logs? Get the Self-Hosted Backup Drill Kit</a></p></div></main><script>function gen(){let s=svc.value||'service', t=type.value, b=tool.value||'backup tool', r=target.value||'/tmp/restore-test'; out.value=`# Restore drill for ${s}
+
+Goal: prove the latest ${b} backup can restore into ${r} without touching production.
+
+1. Record current backup timestamp.
+2. Confirm encryption key/secret access.
+3. Create sandbox directory: ${r}.
+4. Restore files/volumes into sandbox only.
+5. If database-backed (${t}), restore DB into a disposable database container.
+6. Start service with localhost-only ports.
+7. Verify login and 3 known records/files.
+8. Record duration, result, exact commands, and gaps found.
+9. Stop sandbox containers and delete temporary public ports.
+10. Schedule next drill date.
+
+Do not mount production volumes during the test.`} gen()</script></body></html>
