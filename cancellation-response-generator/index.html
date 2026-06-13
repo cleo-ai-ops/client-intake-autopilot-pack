@@ -1,0 +1,18 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cancellation Response Generator</title><meta name="description" content="Generate a calm SaaS cancellation response by reason. No login."><style>body{font-family:Inter,system-ui,sans-serif;line-height:1.55;margin:0;background:#fff7ed;color:#431407}main{max-width:900px;margin:auto;padding:30px 20px}label{display:block;margin-top:12px;font-weight:700}input,select,textarea{width:100%;padding:10px;border:1px solid #fdba74;border-radius:10px}button,.btn{display:inline-block;background:#9a3412;color:white;border:0;border-radius:10px;padding:12px 15px;font-weight:800;margin-top:16px;text-decoration:none}.card{background:white;border:1px solid #fdba74;border-radius:16px;padding:20px}textarea{min-height:300px}</style></head><body><main><h1>Cancellation Response Generator</h1><p>Create a clear, non-pushy response to a SaaS cancellation request. No login.</p><div class="card"><label>Customer name<input id="name" value="Alex"></label><label>Reason<select id="reason"><option>Price concern</option><option>Missing feature</option><option>Low usage / not activated</option><option>Bug or reliability issue</option><option>Project ended / no longer needed</option><option>Unknown reason</option></select></label><label>Possible save path<input id="save" value="a lighter plan or clean cancellation"></label><button onclick="gen()">Generate response</button><label>Response<textarea id="out"></textarea></label><p><a class="btn" href="/client-intake-autopilot-pack/saas-cancellation-save-kit/">Get the full SaaS Cancellation Save Kit</a></p></div></main><script>function gen(){let r=reason.value,n=name.value||'there',s=save.value||'a clean cancellation';let base=`Hi ${n},
+
+Thanks for letting us know. I can help with this and I want to make the cancellation easy if that is the right call.`;let mid={'Price concern':`
+
+If the product is still useful but the current plan is too much right now, the best option may be ${s}. If not, I will process the cancellation cleanly.`, 'Missing feature':`
+
+It sounds like the blocker is a missing workflow or feature. I do not want to overpromise. I can log the feedback and process the cancellation, or if ${s} would genuinely solve the issue, I can help with that.`, 'Low usage / not activated':`
+
+Before cancelling, I can help you get the main setup finished if that would change the outcome. If not, I will process the cancellation now.`, 'Bug or reliability issue':`
+
+You are right to be frustrated by reliability issues. I can escalate/fix the issue if there is a clear path, but if trust is already gone I will process the cancellation.`, 'Project ended / no longer needed':`
+
+That makes sense. I will process the cancellation. If another project comes up later, you are welcome back.`, 'Unknown reason':`
+
+I will process the cancellation. If you are open to one quick note, what was the main reason this was not the right fit right now?`}[r];out.value=base+mid+`
+
+Best,
+[Your name]`;} gen()</script></body></html>
