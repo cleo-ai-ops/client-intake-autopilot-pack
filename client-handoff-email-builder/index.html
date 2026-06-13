@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Client Handoff Email Builder</title><meta name="description" content="Generate a client project handoff email with deliverables, access notes, support boundaries, and next-step offer. No login."><style>body{font-family:Inter,system-ui,sans-serif;line-height:1.55;margin:0;background:#f8fafc;color:#172033}main{max-width:940px;margin:auto;padding:30px 20px}.card{background:white;border:1px solid #e5e7eb;border-radius:16px;padding:20px;margin:16px 0}label{display:block;margin-top:12px;font-weight:800}input,textarea,select{width:100%;box-sizing:border-box;padding:10px;border:1px solid #cbd5e1;border-radius:10px}textarea{min-height:100px}#out{min-height:430px}button,.btn{display:inline-block;background:#0f766e;color:white;border:0;border-radius:10px;padding:12px 15px;font-weight:800;margin-top:16px;text-decoration:none}small{color:#475569}</style></head><body><main><h1>Client Handoff Email Builder</h1><p>Create a polished final delivery email for a client project: files, access, support window, and a gentle maintenance/referral next step. No login; runs in your browser.</p><div class="card"><label>Client name<input id="client" value="Alex"></label><label>Project name<input id="project" value="Website redesign"></label><label>Deliverables<textarea id="deliverables">Final website files
+CMS walkthrough video
+Launch checklist</textarea></label><label>Access / ownership notes<textarea id="access">Admin access transferred to client account
+Domain and hosting billing remain client-owned</textarea></label><label>Support window<select id="support"><option>14 days</option><option>7 days</option><option>30 days</option><option>none after delivery</option></select></label><label>Optional next step<input id="next" value="monthly updates and small fixes retainer"></label><button onclick="gen()">Generate handoff email</button><label>Generated email<textarea id="out"></textarea></label><small>Tailor this to your contract. Do not promise ongoing support unless it is included or paid.</small><p><a class="btn" href="/client-intake-autopilot-pack/client-offboarding-handoff-kit/">Get the full Client Offboarding & Handoff Kit — €4.50</a></p></div><div class="card"><h2>Why this helps</h2><ul><li>Gives the client one source of truth at project close.</li><li>Prevents accidental unlimited support.</li><li>Creates a calm path to paid maintenance, testimonials, and referrals.</li></ul></div></main><script>function lines(x){return (x||'').split('
+').map(s=>s.trim()).filter(Boolean).map(s=>'- '+s).join('
+')}function gen(){let c=client.value||'there', p=project.value||'the project', d=lines(deliverables.value), a=lines(access.value), s=support.value, n=next.value||'ongoing support'; let supportText=s==='none after delivery'?'This delivery completes the agreed project scope. Any follow-up requests can be scoped separately before work begins.':`The included support window covers small fixes and questions directly related to the delivered scope for ${s}. New features, content additions, third-party changes, or strategic requests can be scoped separately.`; out.value=`Subject: Final handoff for ${p}
+
+Hi ${c},
+
+The final handoff for ${p} is ready. Thank you again for trusting me with this project.
+
+Delivered items:
+${d}
+
+Access and ownership notes:
+${a}
+
+Support boundary:
+${supportText}
+
+Optional next step:
+If you want help keeping this updated, I can also help with ${n}. No pressure — the project is fully delivered either way.
+
+A small favor:
+If the project was useful, I’d be grateful for a short testimonial or an introduction to someone with a similar need. I can send a draft for your approval if that makes it easier.
+
+Thanks again,
+[your name]`;} gen()</script></body></html>
