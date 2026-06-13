@@ -1,0 +1,15 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sponsorship Rate Card Calculator</title><meta name="description" content="Estimate a simple creator sponsorship rate card. No login."><style>body{font-family:Inter,system-ui,sans-serif;line-height:1.55;margin:0;background:#fff7ed;color:#1f2937}main{max-width:900px;margin:auto;padding:30px 20px}label{display:block;margin-top:12px;font-weight:700}input,select,textarea{width:100%;padding:10px;border:1px solid #fed7aa;border-radius:10px}button,.btn{display:inline-block;background:#ea580c;color:white;border:0;border-radius:10px;padding:12px 15px;font-weight:800;margin-top:16px;text-decoration:none}.card{background:white;border:1px solid #fed7aa;border-radius:16px;padding:20px}textarea{min-height:310px}</style></head><body><main><h1>Sponsorship Rate Card Calculator</h1><p>Estimate a starting sponsorship menu for newsletters, podcasts, videos, or niche communities. No login.</p><div class="card"><label>Audience size<input id="aud" type="number" value="2500"></label><label>Engagement rate (%)<input id="eng" type="number" value="35"></label><label>Audience niche<select id="niche"><option>specific B2B/professional niche</option><option>consumer hobby niche</option><option>broad creator audience</option></select></label><label>Placement<select id="place"><option>newsletter primary sponsor</option><option>podcast host-read</option><option>YouTube integration</option><option>social post</option></select></label><button onclick="gen()">Calculate</button><label>Rate card draft<textarea id="out"></textarea></label><p><a class="btn" href="/client-intake-autopilot-pack/creator-sponsorship-pitch-kit/">Get the full Creator Sponsorship Pitch Kit</a></p></div></main><script>function gen(){let aud=+document.getElementById('aud').value||0, eng=(+document.getElementById('eng').value||0)/100, engaged=Math.round(aud*eng), place=document.getElementById('place').value, niche=document.getElementById('niche').value; let cpm=niche.includes('B2B')?45:niche.includes('consumer')?25:15; let base=Math.max(25,Math.round((engaged/1000)*cpm)); let primary=Math.round(base*1.5/5)*5, test=Math.round(base/5)*5, bundle=Math.round(primary*2.4/5)*5; out.value=`Draft sponsor rate card
+
+Audience: ${aud.toLocaleString()}
+Estimated engaged audience: ${engaged.toLocaleString()}
+Placement: ${place}
+Niche: ${niche}
+
+Suggested test placement: €${test}
+Suggested primary placement: €${primary}
+Suggested 3-placement bundle: €${bundle}
+
+Use this as a starting point, not a guarantee. Adjust for audience trust, sponsor fit, workload, exclusivity, and actual past results.
+
+Pitch line:
+I can offer a small ${place} test to a focused audience of ${aud.toLocaleString()} people interested in [topic], with a concise performance recap after the placement.`} gen()</script></body></html>
