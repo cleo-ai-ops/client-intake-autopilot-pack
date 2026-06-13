@@ -1,0 +1,32 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SaaS Retention Checklist Generator</title><meta name="description" content="Generate a lightweight SaaS retention ops checklist. No login."><style>body{font-family:Inter,system-ui,sans-serif;line-height:1.55;margin:0;background:#f8fafc;color:#0f172a}main{max-width:900px;margin:auto;padding:30px 20px}label{display:block;margin-top:12px;font-weight:700}input,select,textarea{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:10px}button,.btn{display:inline-block;background:#2563eb;color:white;border:0;border-radius:10px;padding:12px 15px;font-weight:800;margin-top:16px;text-decoration:none}.card{background:white;border:1px solid #cbd5e1;border-radius:16px;padding:20px}textarea{min-height:360px}</style></head><body><main><h1>SaaS Retention Checklist Generator</h1><p>Generate a practical customer-lifecycle checklist for small SaaS teams. No login.</p><div class="card"><label>Product<input id="product" value="Acme Analytics"></label><label>Main leak<select id="leak"><option>trial users do not activate</option><option>failed payments become churn</option><option>cancellations are handled ad hoc</option><option>bugs create support loops</option><option>feature requests hijack roadmap</option></select></label><label>Team size<input id="team" value="solo founder"></label><button onclick="gen()">Generate checklist</button><label>Checklist<textarea id="out"></textarea></label><p><a class="btn" href="/client-intake-autopilot-pack/saas-retention-ops-bundle/">Get the full SaaS Retention Ops Bundle</a></p></div></main><script>function gen(){let p=product.value||'your SaaS',l=leak.value,t=team.value||'small team';out.value=`SaaS Retention Ops Checklist for ${p}
+
+Context: ${t}. Main leak: ${l}.
+
+1. Trial onboarding
+- Define first-value action.
+- Write day 0, day 2, and day 5 emails.
+- Track activated / not activated.
+
+2. Failed payments
+- Add a calm day 0 heads-up.
+- Add reminder timing before access changes.
+- Track recovered / unresolved accounts.
+
+3. Cancellation handling
+- Ask for reason without pressure.
+- Offer only one relevant save path.
+- Record reason for roadmap/support review.
+
+4. Support + bug reports
+- Use a reproducibility checklist.
+- Send a customer reply that sets expectations.
+- Link issue to affected account.
+
+5. Feature requests
+- Score by affected revenue, frequency, strategic fit, and effort.
+- Reply with honest status, not fake certainty.
+
+6. Incidents
+- Prepare initial update, progress update, resolution note, and postmortem summary.
+
+Next action today: choose one leak and install the relevant template before building anything new.`} gen()</script></body></html>
