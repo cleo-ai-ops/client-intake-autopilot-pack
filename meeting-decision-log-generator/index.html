@@ -1,0 +1,27 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Meeting Decision Log Generator</title><meta name="description" content="Turn meeting notes into a clean decision log with decisions, owners, dates, risks, and follow-up wording. No login."><style>body{font-family:Inter,system-ui,sans-serif;line-height:1.55;margin:0;background:#fff7ed;color:#1f2937}main{max-width:960px;margin:auto;padding:34px 20px}.card{background:white;border:1px solid #fed7aa;border-radius:18px;padding:20px;margin:16px 0;box-shadow:0 8px 20px #c2410c12}label{display:block;font-weight:850;margin-top:12px}input,textarea,select{width:100%;box-sizing:border-box;padding:10px;border:1px solid #fdba74;border-radius:10px}textarea{min-height:110px}button,.btn{display:inline-block;background:#c2410c;color:white;border:0;border-radius:10px;padding:12px 15px;font-weight:850;text-decoration:none;margin-top:14px}#out{min-height:430px}small{color:#78716c}</style></head><body><main><h1>Meeting Decision Log Generator</h1><p>Convert rough meeting notes into a decision log your team or client can actually act on: what was decided, who owns what, when it is due, and what risk needs attention.</p><section class="card"><label>Meeting / project<input id="meeting" value="Website launch planning call"></label><label>Participants<input id="people" value="Client lead, designer, developer, project manager"></label><label>Raw meeting notes<textarea id="notes">Approved homepage direction
+Client will send final testimonials by Friday
+Need to confirm analytics access
+Risk: launch date slips if copy is late</textarea></label><label>Tone<select id="tone"><option>client-friendly</option><option>internal team</option><option>executive concise</option></select></label><button onclick="gen()">Generate decision log</button><label>Decision log + recap<textarea id="out"></textarea></label><small>Review before sending. Use this to clarify decisions, not to invent agreement where none exists.</small><p><a class="btn" href="https://cleo-ai-ops.github.io/client-intake-autopilot-pack/meeting-follow-up-action-kit/">Get the full Meeting Follow-Up & Action Item Kit — €4.50</a> <a href="https://cleo-ai-ops.github.io/client-intake-autopilot-pack/meeting-action-item-generator/">Action item generator</a></p></section><section class="card"><h2>When to use this</h2><ul><li>After client calls where decisions were made verbally.</li><li>Before a project handoff or scope change.</li><li>When a meeting creates owners, deadlines, risks, or dependencies.</li></ul></section></main><script>function cleanLines(x){return (x||'').split('
+').map(s=>s.trim()).filter(Boolean)}function gen(){let m=meeting.value||'the meeting', p=people.value||'the group', lines=cleanLines(notes.value); let decisions=[], actions=[], risks=[]; lines.forEach((l,i)=>{let low=l.toLowerCase(); if(low.includes('risk')||low.includes('blocked')||low.includes('slip')||low.includes('waiting')) risks.push(l); else if(low.includes('will')||low.includes('send')||low.includes('confirm')||low.includes('due')||low.includes('by ')) actions.push(l); else decisions.push(l);}); let fmt=(arr,fallback)=>arr.length?arr.map((x,i)=>`${i+1}. ${x}`).join('
+'):fallback; out.value=`Subject: Decisions and next steps from ${m}
+
+Hi all,
+
+Thanks for the useful discussion. To keep momentum and avoid ambiguity, here is the decision log from the meeting.
+
+Participants: ${p}
+Tone: ${tone.value}
+
+Decisions confirmed:
+${fmt(decisions,'1. No final decisions were clearly captured in the notes. Please reply with corrections if something should be recorded.')}
+
+Action items / owners to confirm:
+${fmt(actions,'1. No explicit action items were captured.')}
+
+Risks / dependencies:
+${fmt(risks,'1. No major risks were captured.')}
+
+Please reply with corrections by [date]. If there are no changes, I will treat this as the working record and use it to drive the next steps.
+
+Best,
+[your name]`;} gen()</script></body></html>
