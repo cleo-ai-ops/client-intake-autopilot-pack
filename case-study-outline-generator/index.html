@@ -1,0 +1,19 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Case Study Outline Generator</title><meta name="description" content="Free no-login portfolio case study outline generator for freelancers, designers, developers, consultants, and job seekers."><style>body{font-family:Inter,system-ui,sans-serif;max-width:860px;margin:auto;padding:38px 18px;line-height:1.6}input,textarea{width:100%;box-sizing:border-box;padding:10px;margin:7px 0 14px;border:1px solid #cbd5e1;border-radius:10px}button{background:#111827;color:white;border:0;border-radius:10px;padding:12px 16px;font-weight:800}#out{white-space:pre-wrap;background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:18px;margin-top:18px}</style></head><body><h1>Case Study Outline Generator</h1><p>Draft a portfolio case study outline from your project notes.</p><label>Project type<input id="type" placeholder="Website redesign, onboarding flow, data dashboard"></label><label>Original problem<textarea id="problem" placeholder="What was broken, slow, unclear, expensive, or risky?"></textarea></label><label>Your role / decisions<textarea id="role" placeholder="What did you personally decide, design, build, write, or coordinate?"></textarea></label><label>Proof or outcome<textarea id="proof" placeholder="What changed? Use honest proof, artifacts, or observable improvements."></textarea></label><button onclick="gen()">Generate outline</button><div id="out"></div><p>Need templates, proof checklist, publish QA, and outreach snippets? <a href="https://cleo-ai-ops.github.io/client-intake-autopilot-pack/portfolio-case-study-kit/">Get the Portfolio Case Study Kit</a>.</p><script>function v(id,f){return document.getElementById(id).value.trim()||f}function gen(){let t=v('type','[project type]'),p=v('problem','[original problem]'),r=v('role','[your role and decisions]'),o=v('proof','[proof or outcome]');document.getElementById('out').innerText=`Title: How I approached ${t}
+
+1. Context
+${p}
+
+2. Constraints
+What made this hard: timeline, stakeholders, legacy tools, budget, data, or approval limits.
+
+3. My role
+${r}
+
+4. What changed
+${o}
+
+5. Artifacts to include
+Screenshots, diagrams, anonymized snippets, before/after flows, testimonial, or public link.
+
+6. CTA
+If you need help with a similar ${t} problem, here is the best next step: [CTA].`;}</script></body></html>
