@@ -1,0 +1,33 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Podcast Guest One-Sheet Generator</title><meta name="description" content="Generate a clean podcast guest one-sheet for host outreach. No login required."><style>body{font-family:Inter,system-ui,sans-serif;margin:0;background:#f5f3ff;color:#172033;line-height:1.55}main{max-width:1040px;margin:auto;padding:34px 18px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}.card{background:#fff;border:1px solid #ddd6fe;border-radius:18px;padding:22px;box-shadow:0 10px 26px #4c1d9510}label{display:block;font-weight:750;margin-top:12px}input,textarea{width:100%;box-sizing:border-box;padding:10px;border:1px solid #c4b5fd;border-radius:10px;font:inherit}textarea{min-height:110px}button,.btn{display:inline-block;background:#7c3aed;color:white;border:0;border-radius:10px;padding:12px 15px;font-weight:850;margin-top:16px;text-decoration:none}#out{min-height:620px;white-space:pre-wrap}.muted{color:#6d28d9}</style></head><body><main><p class="muted">Free podcast outreach tool</p><h1>Podcast Guest One-Sheet Generator</h1><p>Draft a host-ready one-sheet with your bio, episode angles, talking points, proof, and links before you pitch a show.</p><div class="grid"><section class="card"><label>Name / role<input id="name" value="Avery Stone, founder of ClearOps"></label><label>Short bio<textarea id="bio">I help small SaaS teams fix onboarding and retention leaks with simple lifecycle systems.</textarea></label><label>Audience fit<input id="aud" value="Best for podcasts serving SaaS founders, indie hackers, consultants, and small product teams"></label><label>Suggested episode titles<textarea id="titles">How tiny SaaS teams can reduce churn without hiring customer success
+The first 7 emails every trial user should receive
+What failed payments reveal about retention operations</textarea></label><label>Talking points<textarea id="points">A simple retention leak map
+Examples from trial onboarding, failed payments, and cancellations
+Common mistakes founders make when support gets busy
+A practical checklist listeners can use after the episode</textarea></label><label>Proof / credibility<textarea id="proof">Built lightweight retention workflows for solo operators
+Publishes practical SaaS lifecycle templates
+Can share concrete examples without exposing client data</textarea></label><label>Links / contact<textarea id="links">Website: https://example.com
+LinkedIn: https://linkedin.com/in/example
+Email: hello@example.com</textarea></label><button onclick="gen()">Generate one-sheet</button></section><section class="card"><label>One-sheet draft<textarea id="out"></textarea></label><button onclick="navigator.clipboard.writeText(out.value)">Copy draft</button><p><a class="btn" href="/client-intake-autopilot-pack/podcast-guest-pitch-kit/">Get the full Podcast Guest Pitch Kit</a></p></section></div></main><script>function bullets(s){return s.split('
+').map(x=>x.trim()).filter(Boolean).map(x=>'• '+x).join('
+')}function gen(){let n=name.value||'[Name / role]';let b=bio.value||'[Short bio]';let a=aud.value||'[Audience fit]';let t=bullets(titles.value||'[Episode title]');let p=bullets(points.value||'[Talking point]');let pr=bullets(proof.value||'[Proof point]');let l=links.value||'[Links]';out.value=`${n} — podcast guest one-sheet
+
+Short bio
+${b}
+
+Best audience fit
+${a}
+
+Suggested episode angles
+${t}
+
+Talking points
+${p}
+
+Credibility / useful context
+${pr}
+
+Host note
+I aim to make the conversation practical, specific, and useful for listeners — not a sales pitch. I can adapt the angle to your existing format.
+
+Links / contact
+${l}`;}gen()</script></body></html>
