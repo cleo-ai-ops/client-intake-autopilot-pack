@@ -1,0 +1,26 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Weekly Status Report Generator</title><meta name="description" content="Free no-login generator for weekly client status updates with progress, blockers, decisions, and risks."><style>body{font-family:Inter,system-ui,sans-serif;max-width:920px;margin:auto;padding:34px 18px;line-height:1.55;background:#eef2ff;color:#111827}textarea,input,select{width:100%;box-sizing:border-box;padding:10px;border:1px solid #818cf8;border-radius:10px;margin:6px 0 12px}button,.btn{background:#4338ca;color:white;border:0;border-radius:10px;padding:12px 16px;font-weight:850;text-decoration:none}.card{background:white;border:1px solid #c7d2fe;border-radius:18px;padding:20px;margin:14px 0}#out{white-space:pre-wrap;background:#fff;border:1px solid #c7d2fe;border-radius:14px;padding:18px}</style></head><body><h1>Weekly Status Report Generator</h1><p>Turn rough project notes into a client-safe weekly update.</p><section class="card"><label>Project<input id="project" placeholder="Website redesign, onboarding migration, SEO sprint"></label><label>Status<select id="status"><option>Green — on track</option><option>Yellow — needs attention</option><option>Red — blocked</option></select></label><label>Rough notes<textarea id="notes" rows="8" placeholder="Completed homepage wireframes. Waiting on product photos. Client needs to approve copy by Thursday. Risk: launch slips if assets arrive after Friday."></textarea></label><button onclick="gen()">Generate status update</button></section><section class="card"><h2>Draft</h2><div id="out"></div><p><a class="btn" href="https://cleo-ai-ops.github.io/client-intake-autopilot-pack/weekly-client-status-report-kit/">Get the full kit</a></p></section><script>function pick(re){return (notes.value||'').split(/
+|\./).map(x=>x.trim()).filter(x=>x&&re.test(x)).slice(0,5)}function bullet(a,f){return (a.length?a:[f]).map(x=>'- '+x).join('
+')}function gen(){let p=project.value||'[Project]';let s=status.value;let completed=pick(/complete|done|finished|shipped|sent|approved|built/i);let decisions=pick(/need|approve|confirm|decide|input|waiting/i);let risks=pick(/risk|block|delay|slip|issue|late|budget|scope/i);out.innerText=`Subject: Weekly status — ${p}
+
+Hi [Name],
+
+Here is the weekly update for ${p}.
+
+Overall status: ${s}
+
+Completed this week:
+${bullet(completed,'[Progress made this week]')}
+
+Next / decisions needed:
+${bullet(decisions,'[Decision or input needed, with due date]')}
+
+Risks or blockers:
+${bullet(risks,'No major risks this week.')}
+
+Recommended next step:
+- [Your recommended path]
+
+I’ll keep this moving and will flag anything that changes.
+
+Best,
+[You]`}gen()</script></body></html>
