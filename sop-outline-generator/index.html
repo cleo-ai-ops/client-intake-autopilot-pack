@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Free SOP Outline Generator</title><meta name="description" content="Free no-login SOP outline generator for repeatable workflows."><style>body{font-family:Inter,system-ui,sans-serif;max-width:920px;margin:auto;padding:34px 18px;line-height:1.55;background:#ecfccb;color:#172554}textarea,input{width:100%;box-sizing:border-box;padding:10px;border:1px solid #84cc16;border-radius:10px;margin:6px 0 12px}button,.btn{background:#365314;color:white;border:0;border-radius:10px;padding:12px 16px;font-weight:850;text-decoration:none}.card{background:white;border:1px solid #bef264;border-radius:18px;padding:20px;margin:14px 0}#out{white-space:pre-wrap;background:#fff;border:1px solid #bef264;border-radius:14px;padding:18px}</style></head><body><h1>SOP Outline Generator</h1><p>Turn a rough recurring workflow into a first SOP draft.</p><section class="card"><label>Process name<input id="process" placeholder="Client onboarding, invoice follow-up, content publishing"></label><label>Rough notes<textarea id="notes" rows="8" placeholder="When a proposal is signed, create project folder, send welcome email, ask for assets, schedule kickoff. Edge case: payment not received."></textarea></label><button onclick="gen()">Generate SOP outline</button></section><section class="card"><h2>Draft</h2><div id="out"></div><p><a class="btn" href="https://cleo-ai-ops.github.io/client-intake-autopilot-pack/sop-documentation-starter-kit/">Get the full kit</a></p></section><script>function sent(rx){return (notes.value||'').split(/
+|\./).map(x=>x.trim()).filter(x=>x&&rx.test(x)).slice(0,6)}function b(a,f){return (a.length?a:[f]).map(x=>'- '+x).join('
+')}function gen(){let p=process.value||'[Process]';let n=notes.value||'';let steps=sent(/create|send|check|ask|schedule|update|review|publish|record|confirm|follow/i);let edge=sent(/if|unless|except|edge|blocked|missing|late|not received|fails/i);out.innerText=`# SOP: ${p}
+
+Owner: [Name]
+Backup owner: [Name]
+Trigger: [When this process starts]
+Outcome: [What done looks like]
+
+## Inputs / access needed
+- [Links, tools, files, credentials, source of truth]
+
+## Steps
+${b(steps,'[Step 1]
+- [Step 2]
+- [Step 3]')}
+
+## Quality check
+- [What must be true before this is complete?]
+
+## Edge cases
+${b(edge,'[If something is missing or blocked, what happens?]')}
+
+## Evidence / log
+- [Where completion is recorded]
+
+## Review date
+- [Date]`}gen()</script></body></html>
