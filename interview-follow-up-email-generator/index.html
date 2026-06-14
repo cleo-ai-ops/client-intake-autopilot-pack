@@ -1,0 +1,10 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Interview Follow-Up Email Generator</title><style>body{font-family:Inter,system-ui,sans-serif;max-width:820px;margin:auto;padding:38px 18px;line-height:1.6}input,textarea,select{width:100%;padding:10px;margin:7px 0 14px;border:1px solid #cbd5e1;border-radius:10px}button{background:#2563eb;color:white;border:0;border-radius:10px;padding:12px 16px;font-weight:800}#out{white-space:pre-wrap;background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:18px;margin-top:18px}</style></head><body><h1>Interview Follow-Up Email Generator</h1><p>Create a specific post-interview note from your actual conversation details.</p><label>Interviewer name<input id="name" placeholder="Alex"></label><label>Role/company<input id="role" placeholder="Product Designer at Acme"></label><label>Specific thing discussed<textarea id="detail" placeholder="The team is improving onboarding analytics..."></textarea></label><label>Your matching proof<textarea id="proof" placeholder="I built a similar activation dashboard..."></textarea></label><button onclick="gen()">Generate follow-up</button><div id="out"></div><p>Need recruiter check-ins, take-home notes, offer questions, and a tracker? <a href="https://cleo-ai-ops.github.io/client-intake-autopilot-pack/job-interview-follow-up-kit/">Get the full kit</a>.</p><script>function gen(){let n=document.getElementById('name').value||'[Name]';let r=document.getElementById('role').value||'[Role]';let d=document.getElementById('detail').value||'[specific topic]';let p=document.getElementById('proof').value||'[brief relevant experience]';document.getElementById('out').innerText=`Subject: Thank you — ${r} conversation
+
+Hi ${n},
+
+Thank you for taking the time today. I enjoyed learning more about ${d}. That stood out because it connects closely with ${p}.
+
+I am excited about the possibility of contributing to the team and helping with the priorities we discussed. Happy to send anything else that would be useful as you compare candidates.
+
+Best,
+[Your name]`;}</script></body></html>
