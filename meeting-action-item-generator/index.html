@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Meeting Action Item Generator</title><meta name="description" content="Free no-login generator that turns meeting notes into follow-up action items, owners, deadlines, and recap email."><style>body{font-family:Inter,system-ui,sans-serif;max-width:920px;margin:auto;padding:34px 18px;line-height:1.55;background:#fffbeb;color:#1f2937}textarea,input{width:100%;box-sizing:border-box;padding:10px;border:1px solid #f59e0b;border-radius:10px;margin:6px 0 12px}button,.btn{background:#c2410c;color:white;border:0;border-radius:10px;padding:12px 16px;font-weight:850;text-decoration:none}.card{background:white;border:1px solid #fed7aa;border-radius:18px;padding:20px;margin:14px 0}#out{white-space:pre-wrap;background:#fff;border:1px solid #fed7aa;border-radius:14px;padding:18px}</style></head><body><h1>Meeting Action Item Generator</h1><p>Paste rough meeting notes. Get a cleaner recap structure you can edit before sending.</p><section class="card"><label>Meeting context<input id="ctx" placeholder="Client kickoff, weekly project sync, sales discovery"></label><label>Rough notes<textarea id="notes" rows="8" placeholder="Decision: launch scope excludes pricing page. Ana drafts copy by Friday. Need John to confirm analytics access. Risk: design review may block timeline."></textarea></label><button onclick="gen()">Generate recap</button></section><section class="card"><h2>Draft</h2><div id="out"></div><p><a class="btn" href="https://cleo-ai-ops.github.io/client-intake-autopilot-pack/meeting-follow-up-action-kit/">Get the full kit</a></p></section><script>function lines(){return (notes.value||'').split(/
+|\./).map(x=>x.trim()).filter(Boolean)}function gen(){let c=ctx.value||'today's meeting';let l=lines();let decisions=l.filter(x=>/decision|agreed|approved|scope/i.test(x)).slice(0,4);let risks=l.filter(x=>/risk|block|issue|delay|unclear|confirm|need/i.test(x)).slice(0,4);let acts=l.filter(x=>/by |due|owner|draft|send|confirm|review|create|update/i.test(x)).slice(0,6);out.innerText=`Subject: Recap + next steps from ${c}
+
+Hi [Name],
+
+Thanks for the time today. I captured the decisions and next steps below so nothing gets lost.
+
+Decisions:
+${(decisions.length?decisions:['[Decision or agreement]']).map(x=>'- '+x).join('
+')}
+
+Action items:
+${(acts.length?acts:['[Owner] — [action] — due [date]']).map(x=>'- '+x).join('
+')}
+
+Open questions / risks:
+${(risks.length?risks:['[Question, blocker, or risk]']).map(x=>'- '+x).join('
+')}
+
+I’ll move forward with [next step] unless anything above looks off.
+
+Best,
+[You]`}gen()</script></body></html>
