@@ -1,0 +1,35 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Creator Collab Brief Builder</title><meta name="description" content="Build a clear creator collaboration brief with goals, audience fit, deliverables, timeline, and next steps. No login."><style>body{font-family:Inter,system-ui,sans-serif;margin:0;background:#f8fafc;color:#172033;line-height:1.55}main{max-width:1050px;margin:auto;padding:32px 18px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}.card{background:white;border:1px solid #dbeafe;border-radius:18px;padding:20px;box-shadow:0 8px 28px #1e3a8a12}h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.05;margin:.2em 0}label{display:block;font-weight:800;margin-top:12px}input,textarea,select{width:100%;box-sizing:border-box;border:1px solid #bfdbfe;border-radius:10px;padding:10px;font:inherit}textarea{min-height:120px}button,.btn{display:inline-block;background:#2563eb;color:white;border:0;border-radius:10px;padding:12px 16px;font-weight:850;text-decoration:none;margin-top:14px}#out{min-height:560px;white-space:pre-wrap}.muted{color:#475569}</style></head><body><main><p class="muted">Free creator collaboration tool</p><h1>Creator Collab Brief Builder</h1><p>Create a partner-ready collaboration brief before you pitch, so the other creator can say yes without guessing the value, scope, or timeline.</p><div class="grid"><section class="card"><label>Collab idea<input id="idea" value="Newsletter swap plus shared checklist"></label><label>Your audience<input id="audience" value="Freelancers and solo SaaS founders improving client/revenue systems"></label><label>Partner audience<input id="partner" value="Newsletter creators and indie operators growing without paid ads"></label><label>Goal<select id="goal"><option>Audience growth</option><option>Lead generation</option><option>Community trust</option><option>Product launch support</option></select></label><label>Value for partner<textarea id="value">Useful free resource for their readers
+Light lift: I provide copy and tracking link
+Mutual audience overlap without direct competition</textarea></label><label>Deliverables<textarea id="deliverables">1 newsletter mention from each side
+Shared free checklist/resource
+Optional LinkedIn repost within 48 hours</textarea></label><label>Timeline<input id="timeline" value="Draft this week, publish next Tuesday or Thursday"></label><label>Success measure<input id="measure" value="Clicks, replies, new subscribers, and qualitative feedback"></label><button onclick="gen()">Build brief</button></section><section class="card"><label>Collaboration brief<textarea id="out"></textarea></label><button onclick="navigator.clipboard.writeText(out.value)">Copy brief</button><p><a class="btn" href="/client-intake-autopilot-pack/creator-collaboration-pitch-kit/">Get the full paid kit</a></p></section></div></main><script>function bullets(s){return s.split('
+').map(x=>x.trim()).filter(Boolean).map(x=>'• '+x).join('
+')}function gen(){let idea=document.getElementById('idea').value||'[Collab idea]',aud=document.getElementById('audience').value||'[Your audience]',partner=document.getElementById('partner').value||'[Partner audience]',goal=document.getElementById('goal').value,val=bullets(document.getElementById('value').value),del=bullets(document.getElementById('deliverables').value),timeline=document.getElementById('timeline').value,measure=document.getElementById('measure').value;out.value=`Creator collaboration brief
+
+Idea
+${idea}
+
+Goal
+${goal}
+
+Audience fit
+My audience: ${aud}
+Partner audience: ${partner}
+
+Why this should be useful for the partner
+${val}
+
+Proposed deliverables
+${del}
+
+Timeline
+${timeline}
+
+Success measure
+${measure}
+
+Low-friction next step
+If this feels useful, I can send a draft blurb, link, and publish-date options so you can approve or edit before committing.
+
+Risk control
+No inflated claims, no list sharing, and no obligation to continue if the first test is not useful for both sides.`}gen()</script></body></html>
